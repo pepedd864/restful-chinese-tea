@@ -1,0 +1,12 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: calc(min(100vw, 100vh) / 1920  * 16);
+}
+
+body {
+    font-size: 2rem;
+}
