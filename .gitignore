@@ -12,6 +12,7 @@ target/
 *.iml
 *.ipr
 .idea/ApifoxUploaderProjectSetting.xml
+.idea/dataSources.xml
 
 ### Eclipse ###
 .apt_generated
