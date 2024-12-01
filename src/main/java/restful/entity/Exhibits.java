@@ -14,7 +14,7 @@ import lombok.EqualsAndHashCode;
 @Data
 public class Exhibits extends IdEntity {
     private String title;
-    private int num;
+    private String num;
     private int categoryId;
     private String description;
     private String img;

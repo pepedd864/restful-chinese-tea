@@ -27,18 +27,17 @@ public class Category extends IdEntity {
     /**
      * 分类编号
      */
-    private int num;
+    private String num;
 
     /**
      * 分类图标
      */
     private String icon;
 
-    public Category setDataWithoutId (Category category) {
+    public void setDataWithoutId (Category category) {
         this.title = category.title;
         this.num = category.num;
         this.icon = category.icon;
-        return this;
     }
 }
 
