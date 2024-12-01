@@ -3,6 +3,11 @@
     padding: 0;
 }
 
+html,
+body {
+    overflow: hidden;
+}
+
 div,
 span,
 button,
