@@ -9,9 +9,9 @@
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
             <property name="jakarta.persistence.jdbc.url"
-                      value="jdbc:sqlserver://www.camcenter.top:19687;databaseName=restful;encrypt=true;trustServerCertificate=true;"/>
+                      value="jdbc:sqlserver://127.0.0.1:1433;databaseName=restful;encrypt=true;trustServerCertificate=true;"/>
             <property name="jakarta.persistence.jdbc.user" value="sa"/>
-            <property name="jakarta.persistence.jdbc.password" value="ymv$NbhV@Qoj55BdGVscgn!%BCH^8"/>
+            <property name="jakarta.persistence.jdbc.password" value="123456"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
@@ -20,4 +20,5 @@
             <property name="hibernate.ejb.naming_strategy" value="restful.database.SQLServer"/>
         </properties>
     </persistence-unit>
+
 </persistence>
