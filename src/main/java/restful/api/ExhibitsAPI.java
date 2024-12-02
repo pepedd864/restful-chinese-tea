@@ -1,4 +1,4 @@
-tianpackage restful.api;
+package restful.api;
 
 import jakarta.ws.rs.*;
 
