@@ -26,13 +26,13 @@ public class CategoryAPI {
             transaction.begin();
 
             // 使用 NamedQuery 检查 num 是否唯一
-            Long count = entityManager.createNamedQuery("Category.findByNum", Long.class)
+            Long count = entityManager.createNamedQuery("Category.countByNum", Long.class)
                     .setParameter("num", category.getNum())
                     .getSingleResult();
 
             if (count > 0) {
                 transaction.rollback();
-                return new Result(-2, "分类编号已存在", null, "");
+                return new Result(-2, "分类编号: " + category.getNum() + " 已存在", null, "");
             }
 
             // 插入新分类
@@ -47,7 +47,6 @@ public class CategoryAPI {
             return new Result(-100, "添加失败: " + e.getMessage(), null, "");
         }
     }
-
 
 
     @DELETE
@@ -101,14 +100,14 @@ public class CategoryAPI {
             }
 
             // 检查 num 是否更新，且新 num 是否唯一
-            if (updatedCategory.getNum() != existingCategory.getNum()) {
-                Long count = entityManager.createNamedQuery("Category.findByNum", Long.class)
+            if (!updatedCategory.getNum().equals(existingCategory.getNum())) {
+                Long count = entityManager.createNamedQuery("Category.countByNum", Long.class)
                         .setParameter("num", updatedCategory.getNum())
                         .getSingleResult();
 
                 if (count > 0) {
                     transaction.rollback();
-                    return new Result(-2, "新的分类编号已存在", null, "");
+                    return new Result(-2, "新的分类编号: " + updatedCategory.getNum() + " 已存在", null, "");
                 }
             }
 
@@ -186,4 +185,6 @@ public class CategoryAPI {
             return new Result(-100, "查询失败: " + e.getMessage(), null, "");
         }
     }
+
+
 }
