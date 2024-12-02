@@ -41,4 +41,3 @@ build/
 /.idea/.cache/.Apifox_Helper/.toolWindow.db
 
 src/main/resources/META-INF/persistence.xml
-.idea/vcs.xml
