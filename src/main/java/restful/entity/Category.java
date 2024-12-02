@@ -1,8 +1,10 @@
 package restful.entity;
 
-import jakarta.persistence.*;
-import lombok.Data;
 import jakarta.persistence.Entity;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.Table;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @EqualsAndHashCode(callSuper = true)
@@ -11,7 +13,8 @@ import lombok.EqualsAndHashCode;
 @NamedQueries({
         @NamedQuery(name = "Category.findById", query = "SELECT category FROM Category category WHERE category.id = :id"),
         @NamedQuery(name = "Category.findAll", query = "SELECT category FROM Category category ORDER BY category.num ASC"),
-        @NamedQuery(name = "Category.findByNum", query = "SELECT COUNT(c) FROM Category c WHERE c.num = :num"),
+        @NamedQuery(name = "Category.countByNum", query = "SELECT COUNT(c) FROM Category c WHERE c.num = :num"),
+        @NamedQuery(name = "Category.countById", query = "SELECT COUNT(c) FROM Category c WHERE c.id = :id"),
 })
 @Data
 /*
