@@ -35,12 +35,13 @@ public class Category extends IdEntity {
     /**
      * 分类图标
      */
-    private String icon;
+    private String icon = "default-icon.png";
 
     public void setDataWithoutId (Category category) {
         this.title = category.title;
         this.num = category.num;
-        this.icon = category.icon;
+        if(category.icon != null)
+            this.icon = category.icon;
     }
 }
 
