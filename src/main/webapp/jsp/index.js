@@ -58,7 +58,7 @@ function changePage(toPage = "home") {
 
 $(document).ready(function () {
 	initPage();
-	$(".side button").each(function (index, elem) {
+	$(".side .btn").each(function (index, elem) {
 		console.log(elem);
 		const toPage = $(elem).data("page");
 		$(elem).click(() => {

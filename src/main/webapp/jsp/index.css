@@ -13,4 +13,25 @@ span,
 button,
 body {
     font-size: 1.5rem;
+    font-family: font1;
+}
+
+@font-face {
+    font-family: font1;
+    src: url("./assets/fonts/HYShangWeiShouShuW.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: font2;
+    src: url("./assets/fonts/向佳红毛笔行书.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: font3;
+    src: url("./assets/fonts/禹卫书法云墨简体.ttf") format('truetype');
+}
+
+@font-face {
+    font-family: font4;
+    src: url("./assets/fonts/站酷妙典风云体.ttf") format('truetype');
 }
