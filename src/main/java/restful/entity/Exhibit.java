@@ -21,13 +21,14 @@ public class Exhibit extends IdEntity {
     @Column(name = "category_id")
     private int categoryId;
     private String description;
-    private String img;
+    private String img = "default-img.png";
 
     public void setDataWithoutId (Exhibit exhibit) {
         this.title = exhibit.title;
         this.num = exhibit.num;
         this.categoryId = exhibit.categoryId;
         this.description = exhibit.description;
-        this.img = exhibit.img;
+        if(exhibit.img != null)
+            this.img = exhibit.img;
     }
 }
