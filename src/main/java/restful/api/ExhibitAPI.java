@@ -1,14 +1,16 @@
 package restful.api;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.TypedQuery;
+import jakarta.persistence.*;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 import jakarta.ws.rs.*;
 import restful.bean.Result;
 import restful.database.EM;
 import restful.entity.Exhibit;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Path("/exhibits")
@@ -33,7 +35,7 @@ public class ExhibitAPI {
 
             if (count > 0) {
                 transaction.rollback();
-                return new Result(-2, "展品编号: "+exhibit.getNum()+" 已存在", null, "");
+                return new Result(-2, "展品编号: " + exhibit.getNum() + " 已存在", null, "");
             }
 
             // 检查分类是否存在 exhibit.getCategoryId
@@ -43,7 +45,7 @@ public class ExhibitAPI {
 
             if (categoryCount == 0) {
                 transaction.rollback();
-                return new Result(-1, "分类id: "+exhibit.getCategoryId()+" 不存在", null, "");
+                return new Result(-1, "分类id: " + exhibit.getCategoryId() + " 不存在", null, "");
             }
 
             // 插入新分类
@@ -120,7 +122,7 @@ public class ExhibitAPI {
                 }
             }
 
-            if(existingExhibit.getCategoryId() != updatedExhibit.getCategoryId()) {
+            if (existingExhibit.getCategoryId() != updatedExhibit.getCategoryId()) {
                 Long categoryCount = entityManager.createNamedQuery("Category.countById", Long.class)
                         .setParameter("id", updatedExhibit.getCategoryId())
                         .getSingleResult();
@@ -271,4 +273,60 @@ public class ExhibitAPI {
         }
     }
 
+    @GET
+    @Path("/search")
+    @Consumes("application/json;charset=UTF-8")
+    @Produces("application/json;charset=UTF-8")
+    public Result search(@QueryParam("category") Integer categoryId, @QueryParam("keyword") String keyword, @QueryParam("title") String title, @QueryParam("description") String description, @QueryParam("num") String num) {
+        EntityManagerFactory emf = EM.getEntityManagerFactory();
+        EntityTransaction transaction = null;
+        try (EntityManager entityManager = emf.createEntityManager()) {
+            transaction = entityManager.getTransaction();
+            transaction.begin();
+
+            CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+            CriteriaQuery<Exhibit> cq = cb.createQuery(Exhibit.class);
+            Root<Exhibit> exhibit = cq.from(Exhibit.class);
+
+            List<Predicate> predicates = new ArrayList<>();
+
+            if (categoryId != null) {
+                predicates.add(cb.equal(exhibit.get("categoryId"), categoryId));
+            }
+            if ((title != null && !title.isEmpty()) || (description != null && !description.isEmpty()) || (num != null && !num.isEmpty())) {
+                if (title != null && !title.isEmpty())
+                    predicates.add(cb.like(exhibit.get("title"), "%" + title + "%"));
+
+                if (description != null && !description.isEmpty())
+                    predicates.add(cb.like(exhibit.get("description"), "%" + description + "%"));
+
+                if (num != null && !num.isEmpty())
+                    predicates.add(cb.like(exhibit.get("num"), "%" + num + "%"));
+
+            } else if (keyword != null && !keyword.isEmpty()) {
+                String likeKeyword = "%" + keyword + "%";
+                predicates.add(cb.or(
+                        cb.like(exhibit.get("title"), likeKeyword),
+                        cb.like(exhibit.get("description"), likeKeyword),
+                        cb.like(exhibit.get("num"), likeKeyword)
+                ));
+            }
+
+            cq.where(predicates.toArray(new Predicate[0]));
+
+            TypedQuery<Exhibit> query = entityManager.createQuery(cq);
+            List<Exhibit> results = query.getResultList();
+
+            // 假设Result类有一个构造函数接受List<Exhibit>
+            if (results.isEmpty())
+                return new Result(-1, "没有找到相关展品", null, "");
+            else
+                return new Result(0, "查询成功", results, "");
+        } catch (Exception e) {
+            if (transaction != null && transaction.isActive()) {
+                transaction.rollback();
+            }
+            return new Result(-100, "查询失败: " + e.getMessage(), null, "");
+        }
+    }
 }
