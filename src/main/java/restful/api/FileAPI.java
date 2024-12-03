@@ -9,6 +9,7 @@ import restful.bean.Result;
 import java.io.*;
 import java.nio.file.*;
 import java.security.MessageDigest;
+import java.util.Objects;
 
 @Path("/file")
 public class FileAPI {
@@ -65,7 +66,11 @@ public class FileAPI {
     @Produces(MediaType.WILDCARD)
     public Response displayFile(@PathParam("fileName") String fileName) {
         try {
-            java.nio.file.Path filePath = Paths.get(UPLOAD_DIR, fileName);
+            java.nio.file.Path filePath;
+            if(fileName.startsWith("default"))
+                filePath = Paths.get(Objects.requireNonNull(getClass().getResource("/default/" + fileName)).toURI());
+            else
+                filePath = Paths.get(UPLOAD_DIR, fileName);
             if (Files.notExists(filePath)) {
                 return Response.status(Response.Status.NOT_FOUND).build();
             }
