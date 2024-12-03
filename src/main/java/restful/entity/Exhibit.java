@@ -21,7 +21,7 @@ public class Exhibit extends IdEntity {
     @Column(name = "category_id")
     private int categoryId;
     private String description;
-    private String img = "default-img.png";
+    private String img = "/api/file/display/default-img.png";
 
     public void setDataWithoutId (Exhibit exhibit) {
         this.title = exhibit.title;

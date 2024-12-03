@@ -35,7 +35,7 @@ public class Category extends IdEntity {
     /**
      * 分类图标
      */
-    private String icon = "default-icon.png";
+    private String icon = "/api/file/display/default-icon.png";
 
     public void setDataWithoutId (Category category) {
         this.title = category.title;

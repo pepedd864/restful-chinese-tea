@@ -52,7 +52,7 @@ public class FileAPI {
             }
 
             // 返回文件 URL
-            String fileUrl = md5Hex + fileExtension;
+            String fileUrl ="/api/file/display/" + md5Hex + fileExtension;
             return new Result(0, "上传成功", fileUrl, "");
 
         } catch (Exception e) {
@@ -61,9 +61,9 @@ public class FileAPI {
     }
 
     @GET
-    @Path("/display")
+    @Path("/display/{fileName}")
     @Produces(MediaType.WILDCARD)
-    public Response displayFile(@QueryParam("fileName") String fileName) {
+    public Response displayFile(@PathParam("fileName") String fileName) {
         try {
             java.nio.file.Path filePath = Paths.get(UPLOAD_DIR, fileName);
             if (Files.notExists(filePath)) {
@@ -88,6 +88,7 @@ public class FileAPI {
     @Path("/delete")
     @Produces("application/json;charset=UTF-8")
     public Result deleteFile(@QueryParam("fileName") String fileName) {
+        fileName = fileName.split("/")[fileName.split("/").length - 1];
         try {
             java.nio.file.Path filePath = Paths.get(UPLOAD_DIR, fileName);
             if (Files.notExists(filePath)) {
