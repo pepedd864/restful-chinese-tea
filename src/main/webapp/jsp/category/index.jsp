@@ -1,17 +1,14 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2024/11/29
-  Time: 20:27
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!doctype html>
 <html>
 <head>
     <title>分类页面</title>
+    <meta charset="UTF-8">
+    <script src="../iframe.js"></script>
     <link rel="stylesheet" href="../index.css">
+    <link rel="stylesheet" href="./index.css">
 </head>
 <body>
-<div>123</div>
+<div id="app">123</div>
 </body>
 </html>

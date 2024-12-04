@@ -1,4 +1,5 @@
-<!-- <%@ page contentType="text/html;charset=UTF-8" language="java" %> -->
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!doctype html>
 <html>
 <head>
     <title>中国茶文化</title>
@@ -27,7 +28,6 @@
         .title {
             display: flex;
             align-items: center;
-            color: #fff;
             background: url("./assets/bg/背景-上.jpg") no-repeat;
             background-size: cover;
             height: 7rem;
@@ -46,6 +46,8 @@
         .title .text {
             margin-left: 2rem;
             font-size: 3.5rem;
+            color: #000000;
+            opacity: 0.5;
         }
 
         .wrapper {
@@ -113,7 +115,7 @@
     </div>
     <div class="wrapper">
         <div class="side">
-            <div class="btn active" data-page="home">
+            <div class="btn" data-page="home">
                 <img src="./assets/side/1-分类管理.png"/>
                 <div class="text">切换home</div>
             </div>
