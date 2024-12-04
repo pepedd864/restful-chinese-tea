@@ -80,6 +80,11 @@
             object-fit: cover;
             height: 6.5rem;
             width: 6.5rem;
+            transition: filter 0.3s;
+        }
+
+        .side .btn.active img {
+            filter: drop-shadow(0 0 10px #fff);
         }
 
         .side .btn .text {
@@ -108,7 +113,7 @@
     </div>
     <div class="wrapper">
         <div class="side">
-            <div class="btn" data-page="home">
+            <div class="btn active" data-page="home">
                 <img src="./assets/side/1-分类管理.png"/>
                 <div class="text">切换home</div>
             </div>
