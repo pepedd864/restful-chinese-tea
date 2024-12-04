@@ -59,9 +59,10 @@ function changePage(toPage = "home") {
 $(document).ready(function () {
 	initPage();
 	$(".side .btn").each(function (index, elem) {
-		console.log(elem);
 		const toPage = $(elem).data("page");
 		$(elem).click(() => {
+			$(elem).siblings().removeClass('active');
+			$(elem).addClass('active')
 			changePage(toPage);
 		});
 	});
