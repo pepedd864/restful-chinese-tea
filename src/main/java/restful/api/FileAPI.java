@@ -1,20 +1,25 @@
 package restful.api;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.ws.rs.*;
-import jakarta.ws.rs.Path;
+import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import restful.bean.Result;
 
-import java.io.*;
-import java.nio.file.*;
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.security.MessageDigest;
 import java.util.Objects;
 
 @Path("/file")
 public class FileAPI {
 
-    private static final String UPLOAD_DIR = "C:/restful/upload/";
+    private static final String UPLOAD_DIR = "upload";
 
     @POST
     @Path("/upload")
@@ -22,7 +27,9 @@ public class FileAPI {
     @Produces("application/json;charset=UTF-8")
     public Result uploadFile(
             @QueryParam("fileName") String fileName,
-            InputStream uploadedInputStream) {
+            InputStream uploadedInputStream,
+            @Context HttpServletRequest request) {
+        System.out.println(UPLOAD_DIR);
         if (fileName == null || fileName.isEmpty() || uploadedInputStream == null)
             return new Result(-3, "参数错误", null, "");
 
@@ -40,7 +47,9 @@ public class FileAPI {
             String md5Hex = bytesToHex(md.digest());
 
             // 确保上传目录存在
-            java.nio.file.Path directory = Paths.get(UPLOAD_DIR);
+            String realPath = request.getServletContext().getRealPath("/");
+            System.out.println(realPath);
+            java.nio.file.Path directory = Paths.get(realPath, UPLOAD_DIR);
             if (Files.notExists(directory)) {
                 Files.createDirectories(directory);
             }
@@ -53,7 +62,7 @@ public class FileAPI {
             }
 
             // 返回文件 URL
-            String fileUrl ="/api/file/display/" + md5Hex + fileExtension;
+            String fileUrl = "/api/file/display/" + md5Hex + fileExtension;
             return new Result(0, "上传成功", fileUrl, "");
 
         } catch (Exception e) {
@@ -64,13 +73,14 @@ public class FileAPI {
     @GET
     @Path("/display/{fileName}")
     @Produces(MediaType.WILDCARD)
-    public Response displayFile(@PathParam("fileName") String fileName) {
+    public Response displayFile(@PathParam("fileName") String fileName, @Context HttpServletRequest request) {
         try {
             java.nio.file.Path filePath;
-            if(fileName.startsWith("default"))
+            String realPath = request.getServletContext().getRealPath("/");
+            if (fileName.startsWith("default"))
                 filePath = Paths.get(Objects.requireNonNull(getClass().getResource("/default/" + fileName)).toURI());
             else
-                filePath = Paths.get(UPLOAD_DIR, fileName);
+                filePath = Paths.get(realPath + UPLOAD_DIR, fileName);
             if (Files.notExists(filePath)) {
                 return Response.status(Response.Status.NOT_FOUND).build();
             }
