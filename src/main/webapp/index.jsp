@@ -4,9 +4,25 @@
 <head>
     <title>中国茶文化</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="./index.css"/>
-    <script src="../js/jquery/jquery.min.js"></script>
-    <script src="./index.js"></script>
+    <link rel="stylesheet" href="index.css"/>
+    <script src="./js/jquery/jquery.min.js"></script>
+    <script src="init.js"></script>
+    <script type="module">
+        import {getAllCategory, createCategory} from "./js/apis/category.js";
+
+        const contextPath = '${pageContext.request.contextPath}'
+        const res = await getAllCategory(contextPath)
+        if (res.data) {
+            const btns = res.data.map((item) => {
+                return '<div class="btn" data-page="category">' +
+                    '<img src="' + contextPath + item.icon + '"/>' +
+                    '<div class="text">' + item.title + '</div>' +
+                    '</div>'
+            })
+            $('.wrapper .side').html(btns)
+        }
+        console.log(res)
+    </script>
     <style>
         body {
             display: flex;
@@ -115,18 +131,6 @@
     </div>
     <div class="wrapper">
         <div class="side">
-            <div class="btn" data-page="home">
-                <img src="./assets/side/1-分类管理.png"/>
-                <div class="text">切换home</div>
-            </div>
-            <div class="btn" data-page="category">
-                <img src="./assets/side/1-分类管理.png"/>
-                <div class="text">切换category</div>
-            </div>
-            <div class="btn" data-page="exhibits">
-                <img src="./assets/side/1-分类管理.png"/>
-                <div class="text">切换exhibits</div>
-            </div>
         </div>
         <div class="content"></div>
     </div>

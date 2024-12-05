@@ -1,8 +1,8 @@
 let current = "home";
 const pages = {
-    home: "./home/index.jsp",
-    category: "./category/index.jsp",
-    exhibits: "./exhibits/index.jsp",
+    home: "./jsp/home/index.jsp",
+    category: "./jsp/category/index.jsp",
+    exhibits: "./jsp/exhibits/index.jsp",
 };
 let wWidth = window.innerWidth;
 let wHeight = window.innerHeight;
@@ -82,7 +82,8 @@ function setMenuActive(elems, index) {
 
 $(document).ready(function () {
     initPage();
-    const elems = $(".side .btn")
+    const elems = $(".wrapper .side .btn")
+    console.log(elems)
     elems.each(function (index, elem) {
         const toPage = $(elem).data("page");
         $(elem).click(() => {

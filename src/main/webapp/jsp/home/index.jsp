@@ -5,7 +5,8 @@
 		<title>首页</title>
 		<meta charset="UTF-8">
 		<script src="../iframe.js"></script>
-		<link rel="stylesheet" href="../index.css" />
+		<script src="../../js/jquery/jquery.min.js"></script>
+		<link rel="stylesheet" href="../../index.css" />
 		<link rel="stylesheet" href="./index.css">
 	</head>
 	<body>
