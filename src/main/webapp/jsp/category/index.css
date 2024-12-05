@@ -1,5 +1,5 @@
 @charset "UTF-8";
 #app {
-  background: url("../assets/bg/背景-中.jpg") no-repeat;
+  background: url("../../assets/bg/背景-中.jpg") no-repeat;
   background-size: cover;
 }
