@@ -6,20 +6,38 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="index.css"/>
     <script src="./js/jquery/jquery.min.js"></script>
-    <script src="init.js"></script>
+    <script src="./init.js"></script>
+    <script src="index.js"></script>
     <script type="module">
         import {getAllCategory, createCategory} from "./js/apis/category.js";
 
         const contextPath = '${pageContext.request.contextPath}'
+        console.log('contextPath:', contextPath)
         const res = await getAllCategory(contextPath)
         if (res.data) {
-            const btns = res.data.map((item) => {
-                return '<div class="btn" data-page="category">' +
+            res.data.push()
+            menus.push({
+                title: '分类管理',
+                num: 'manage',
+                icon: '/api/file/display/default-icon.png'
+            }, ...res.data)
+            console.log({menus})
+            const btns = menus.map((item) => {
+                return '<div class="btn" data-page="' + (item.num === 'manage' ? 'category' : 'exhibits?num=' + item?.num) + '">' +
                     '<img src="' + contextPath + item.icon + '"/>' +
                     '<div class="text">' + item.title + '</div>' +
                     '</div>'
             })
             $('.wrapper .side').html(btns)
+            const elems = $(".wrapper .side .btn")
+            console.log(elems)
+            elems.each(function (index, elem) {
+                const toPage = $(elem).data("page");
+                $(elem).click(() => {
+                    setMenuActive(elems, index)
+                    changePage(toPage);
+                });
+            });
         }
         console.log(res)
     </script>
