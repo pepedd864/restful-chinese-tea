@@ -13,8 +13,24 @@
 <body>
 <div id="app">
     <div class="edit-form">
-        <div class="edit-info"></div>
-        <div class="edit-icon">
+        <div class="edit-info">
+            <div class="item">
+                <span>ID:</span>
+                <input type="text">
+            </div>
+            <div class="item">
+                <span>分类编号:</span>
+                <input type="text">
+            </div>
+            <div class="item">
+                <span>分类标题:</span>
+                <input type="text">
+            </div>
+            <div class="btn">刷新列表</div>
+            <div class="btn">添加记录</div>
+            <div class="btn">修改记录</div>
+        </div>
+        <div class="edit-icon" style="display: none">
             <input type="file" id="fileInput"/>
             <input type="submit" value="上传文件"/>
         </div>

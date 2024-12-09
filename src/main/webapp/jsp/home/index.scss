@@ -1,41 +1,49 @@
 #app {
-	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	width: 100%;
-	height: 100%;
-	box-sizing: border-box;
-	padding: 3rem;
-	background: url("../../assets/bg/背景-中.jpg") no-repeat;
-	background-size: cover;
-	.title {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 2rem;
-		.text {
-			text-align: center;
-			.char {
-				font-size: 10rem;
-			}
-			.pinyin {
-				font-size: 2.5rem;
-			}
-		}
-	}
-	.divider {
-		height: calc(1rem / 16);
-		background: #000;
-		margin: 1rem 0;
-		width: 100%;
-	}
-	.project-info {
-		text-align: center;
-		.top {
-		}
-		.bottom {
-		}
-	}
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 3rem;
+  background: url("../../assets/bg/背景-中.jpg") no-repeat center center;
+  background-size: cover;
+
+  .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+
+    .text {
+      text-align: center;
+
+      .char {
+        font-size: 10rem;
+      }
+
+      .pinyin {
+        font-size: 2.5rem;
+      }
+    }
+  }
+
+  .divider {
+    height: calc(1rem / 16);
+    background: #000;
+    margin: 1rem 0;
+    width: 100%;
+  }
+
+  .project-info {
+    text-align: center;
+
+    .top {
+    }
+
+    .bottom {
+    }
+  }
 }

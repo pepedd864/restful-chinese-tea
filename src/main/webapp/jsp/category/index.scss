@@ -1,5 +1,5 @@
 #app {
-  background: url("../../assets/bg/背景-中.jpg") no-repeat;
+  background: url("../../assets/bg/背景-中.jpg") no-repeat center center;
   background-size: cover;
   height: calc(100% - 2rem * 2);
   display: flex;
@@ -11,8 +11,16 @@
   .edit-form {
     width: 80%;
     height: 5rem;
+    border-radius: 0.7rem;
+    box-shadow: 0 0 1rem #000;
     background: url("../../assets/bg/按钮1.png") no-repeat center center;
     background-size: cover;
+    .edit-info {
+      display: flex;
+      input {
+        width: 2rem;
+      }
+    }
   }
 
   .category-list {

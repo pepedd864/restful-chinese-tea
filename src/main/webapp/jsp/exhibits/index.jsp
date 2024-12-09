@@ -17,10 +17,19 @@
             <div class="btn"><span>前一项</span></div>
         </div>
         <div class="content">
-            <div class="info"></div>
-            <div class="btn"></div>
-            <div class="img"></div>
-            <div class="title"></div>
+            <div class="info">
+                <div class="id">ID：0</div>
+                <div class="num">编号：001</div>
+                <div class="category">新的分类</div>
+            </div>
+            <div class="btn-group">
+                <div class="btn">增</div>
+                <div class="btn">删</div>
+                <div class="btn">改</div>
+                <div class="btn">图</div>
+            </div>
+            <img class="img" src="../../assets/side/1-分类管理.png"/>
+            <div class="title">请先添加数据</div>
             <div class="desc"></div>
         </div>
         <div class="side">
