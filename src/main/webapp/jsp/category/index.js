@@ -1,4 +1,4 @@
-export function getListItem(contextPath,item) {
+export function getListItem(contextPath, item) {
     return `
 <td>
 <img src="${contextPath + item.icon}" />
@@ -10,7 +10,7 @@ ${item.num}
 ${item.title}
 </td>
 <td>
-编辑 删除
+上传 编辑 删除
 </td>
 `
 }

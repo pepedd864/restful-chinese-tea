@@ -1,6 +1,6 @@
 @charset "UTF-8";
 #app {
-  background: url("../../assets/bg/背景-中.jpg") no-repeat;
+  background: url("../../assets/bg/背景-中.jpg") no-repeat center center;
   background-size: cover;
   height: calc(100% - 4rem);
   display: flex;
@@ -12,8 +12,16 @@
 #app .edit-form {
   width: 80%;
   height: 5rem;
+  border-radius: 0.7rem;
+  box-shadow: 0 0 1rem #000;
   background: url("../../assets/bg/按钮1.png") no-repeat center center;
   background-size: cover;
+}
+#app .edit-form .edit-info {
+  display: flex;
+}
+#app .edit-form .edit-info input {
+  width: 2rem;
 }
 #app .category-list {
   position: relative;

@@ -120,7 +120,7 @@
         }
 
         .side .btn.active img {
-            filter: drop-shadow(0 0 10px #fff);
+            filter: drop-shadow(0 0 1rem white) drop-shadow(0 0 1rem white);
         }
 
         .side .btn .text {
@@ -131,7 +131,8 @@
             position: relative;
             width: calc(100% - 7rem);
             height: 100%;
-            background: #ffffff;
+            background: url("./assets/bg/背景-中.jpg") no-repeat center center;
+            background-size: cover;
             overflow: hidden;
         }
 

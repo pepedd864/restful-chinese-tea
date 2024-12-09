@@ -1,57 +1,108 @@
 @charset "UTF-8";
 #app {
-  position: relative;
-  background: url("../../assets/bg/背景-中.jpg") no-repeat;
-  background-size: cover;
-  display: flex;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
+    position: relative;
+    background: url("../../assets/bg/背景-中.jpg") no-repeat center center;
+    background-size: cover;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
 }
+
 #app .wrapper {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 80%;
-  width: 80%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+    width: 80%;
 }
+
 #app .wrapper .side {
-  background: url("../../assets/bg/背景-左.jpg") no-repeat;
-  background-size: cover;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    background: url("../../assets/bg/背景-左.jpg") no-repeat;
+    background-size: cover;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
 #app .wrapper .side .btn {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 30rem;
-  width: 8rem;
-  writing-mode: vertical-lr;
-  cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30rem;
+    width: 8rem;
+    writing-mode: vertical-lr;
+    cursor: pointer;
 }
+
 #app .wrapper .side .btn span {
-  position: relative;
-  font-size: 4rem;
-  z-index: 1;
+    position: relative;
+    font-size: 4rem;
+    z-index: 1;
 }
+
 #app .wrapper .side .btn:after {
-  position: absolute;
-  content: "";
-  height: 6rem;
-  width: 30rem;
-  background: url("../../assets/bg/按钮1.png") no-repeat center center;
-  background-size: contain;
-  z-index: 0;
-  transform: rotate(90deg);
+    position: absolute;
+    content: "";
+    height: 6rem;
+    width: 30rem;
+    background: url("../../assets/bg/按钮1.png") no-repeat center center;
+    background-size: contain;
+    z-index: 0;
+    transform: rotate(90deg);
 }
+
 #app .content {
-  flex: 1;
-  height: 100%;
-  background: url("../../assets/bg/背景-上.jpg") no-repeat;
-  background-size: cover;
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    background: url("../../assets/bg/背景-上.jpg") no-repeat center center;
+    background-size: cover;
+}
+
+#app .content .info {
+    position: absolute;
+    top: 3rem;
+    left: 3rem;
+}
+
+#app .content .info div {
+    font-size: 2.3rem;
+    margin-bottom: 1.5rem;
+}
+
+#app .content .btn-group {
+    position: absolute;
+    right: 3rem;
+    top: 3rem;
+}
+
+#app .content .btn-group .btn {
+    font-size: 2.3rem;
+    padding: 1.5rem;
+    cursor: pointer;
+    background: url("../../assets/bg/按钮2.png") no-repeat center center;
+    background-size: contain;
+    margin-bottom: 1rem;
+}
+
+#app .content img {
+    position: relative;
+    margin-top: 5%;
+    height: 40%;
+    width: 40%;
+    border: 1px red solid;
+    object-fit: contain;
+    margin-bottom: 2rem;
+}
+
+#app .content .title {
+    position: relative;
+    font-size: 3.5rem;
 }
