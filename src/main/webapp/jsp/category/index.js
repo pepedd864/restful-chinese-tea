@@ -10,7 +10,9 @@ ${item.num}
 ${item.title}
 </td>
 <td>
-上传 编辑 删除
+<button class="upload-btn">上传</button>
+<button class="edit-btn">编辑</button>
+删除
 </td>
 `
 }

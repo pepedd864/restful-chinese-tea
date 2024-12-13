@@ -54,7 +54,7 @@
         #app {
             position: relative;
             flex-direction: column;
-            width: 120rem;
+            width: 135rem;
             height: 67.5rem;
             overflow: hidden;
         }
@@ -67,6 +67,7 @@
             height: 7rem;
             width: 100%;
             padding-left: 1rem;
+            cursor: pointer;
         }
 
         .title .icon {
@@ -144,10 +145,10 @@
 </head>
 <body>
 <div id="app">
-    <div class="title">
+    <a class="title" href="./index.jsp">
         <div class="icon"></div>
         <div class="text">中国茶文化展</div>
-    </div>
+    </a>
     <div class="wrapper">
         <div class="side">
         </div>

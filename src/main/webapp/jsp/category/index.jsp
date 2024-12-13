@@ -13,7 +13,7 @@
 <body>
 <div id="app">
     <div class="edit-form">
-        <div class="edit-info">
+        <div class="edit-info" style="display: none">
             <div class="item">
                 <span>ID:</span>
                 <input type="text">
@@ -30,7 +30,11 @@
             <div class="btn">添加记录</div>
             <div class="btn">修改记录</div>
         </div>
-        <div class="edit-icon" style="display: none">
+        <div class="edit-icon">
+            <div class="item">
+                <span>ID:</span>
+                <input type="text">
+            </div>
             <input type="file" id="fileInput"/>
             <input type="submit" value="上传文件"/>
         </div>
@@ -64,6 +68,35 @@
             const listContent = res.data.map(item => '<tr>' + getListItem(contextPath, item) + '</tr>')
             categoryList.append(listContent)
         }
+
+        // Add click event listeners to the "上传" and "编辑" buttons
+        $(document).on('click', '.upload-btn', function () {
+            const row = $(this).closest('tr');
+            const id = row.find('td:eq(0)').text();
+            const num = row.find('td:eq(1)').text();
+            const title = row.find('td:eq(2)').text();
+
+            // Populate the edit form with the item data
+            const editIcon = $('#app .edit-icon');
+            editIcon.find('input[type="text"]').val(id);
+            editIcon.show();
+            $('#app .edit-info').hide();
+        });
+
+        $(document).on('click', '.edit-btn', function () {
+            const row = $(this).closest('tr');
+            const id = row.find('td:eq(0)').text();
+            const num = row.find('td:eq(1)').text();
+            const title = row.find('td:eq(2)').text();
+
+            // Populate the edit form with the item data
+            const editInfo = $('#app .edit-info');
+            editInfo.find('input:eq(0)').val(id);
+            editInfo.find('input:eq(1)').val(num);
+            editInfo.find('input:eq(2)').val(title);
+            editInfo.show();
+            $('#app .edit-icon').hide();
+        });
     });
 </script>
 </body>
