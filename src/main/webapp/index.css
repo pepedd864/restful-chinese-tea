@@ -18,6 +18,10 @@ body {
     font-family: font1;
 }
 
+a {
+    text-decoration: none;
+}
+
 @font-face {
     font-family: font1;
     src: url("./assets/fonts/HYShangWeiShouShuW.ttf") format('truetype');
