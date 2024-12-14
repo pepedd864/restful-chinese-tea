@@ -10,18 +10,35 @@
   padding: 2rem;
 }
 #app .edit-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.3rem 1rem;
   width: 80%;
   height: 5rem;
   border-radius: 0.7rem;
-  box-shadow: 0 0 1rem #000;
+  box-shadow: 0.3rem 0.3rem 1rem #000;
+  overflow: hidden;
   background: url("../../assets/bg/按钮1.png") no-repeat center center;
   background-size: cover;
 }
 #app .edit-form .edit-info {
   display: flex;
+  justify-content: space-around;
+  width: 100%;
 }
 #app .edit-form .edit-info input {
-  width: 2rem;
+  width: 12rem;
+}
+#app .edit-form .edit-icon {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+#app .edit-form .edit-icon .right,
+#app .edit-form .edit-icon .left {
+  display: flex;
+  gap: 1rem;
 }
 #app .category-list {
   position: relative;
@@ -29,6 +46,9 @@
   width: 90%;
   background: url("../../assets/bg/背景-左.jpg") no-repeat;
   background-size: cover;
+  box-shadow: 0.3rem 0.3rem 1rem #000;
+  border-radius: 0.7rem;
+  overflow: hidden;
 }
 #app .category-list table {
   width: 100%;

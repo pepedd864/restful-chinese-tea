@@ -32,15 +32,14 @@
             <div class="title">请先添加数据</div>
             <div class="desc"></div>
         </div>
+        <div class="edit-form"></div>
+        <div class="edit-image"></div>
         <div class="side">
             <div class="btn"><span>后一项</span></div>
         </div>
     </div>
 </div>
 <script type="module">
-    const url = new URL(window.location);
-    const categoryId = url.searchParams.get('num')
-    // $('#app').html('categoryId' + categoryId)
 </script>
 </body>
 </html>

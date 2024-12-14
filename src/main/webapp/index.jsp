@@ -9,37 +9,15 @@
     <script src="./init.js"></script>
     <script src="index.js"></script>
     <script type="module">
-        import {getAllCategory, createCategory} from "./js/apis/category.js";
+      import {getAllCategory} from "./js/apis/category.js";
 
-        const contextPath = '${pageContext.request.contextPath}'
-        console.log('contextPath:', contextPath)
-        const res = await getAllCategory(contextPath)
-        if (res.data) {
-            res.data.push()
-            menus.push({
-                title: '分类管理',
-                num: 'manage',
-                icon: '/api/file/display/default-icon.png'
-            }, ...res.data)
-            console.log({menus})
-            const btns = menus.map((item) => {
-                return '<div class="btn" data-page="' + (item.num === 'manage' ? 'category' : 'exhibits?num=' + item?.num) + '">' +
-                    '<img src="' + contextPath + item.icon + '"/>' +
-                    '<div class="text">' + item.title + '</div>' +
-                    '</div>'
-            })
-            $('.wrapper .side').html(btns)
-            const elems = $(".wrapper .side .btn")
-            console.log(elems)
-            elems.each(function (index, elem) {
-                const toPage = $(elem).data("page");
-                $(elem).click(() => {
-                    setMenuActive(elems, index)
-                    changePage(toPage);
-                });
-            });
-        }
-        console.log(res)
+      const contextPath = '${pageContext.request.contextPath}'
+      console.log('contextPath:', contextPath)
+      const res = await getAllCategory(contextPath)
+      if (res.data) {
+        generateMenus(contextPath, res.data)
+      }
+      console.log(res)
     </script>
     <style>
         body {
@@ -54,9 +32,25 @@
         #app {
             position: relative;
             flex-direction: column;
-            width: 135rem;
-            height: 67.5rem;
+            width: var(--app-width);
+            height: var(--app-height);
             overflow: hidden;
+        }
+
+        #loading {
+            position: absolute;
+            /*display: flex;*/
+            display: none;
+            align-items: center;
+            justify-content: center;
+            top: 0;
+            left: 0;
+            width: var(--app-width);
+            height: var(--app-height);
+            background: rgba(0, 0, 0, 0.5);
+            color: #ffffff;
+            font-size: 5rem;
+            z-index: 9999;
         }
 
         .title {
@@ -145,15 +139,21 @@
 </head>
 <body>
 <div id="app">
-    <a class="title" href="./index.jsp">
+    <div id="loading">加载中...</div>
+    <div class="title">
         <div class="icon"></div>
         <div class="text">中国茶文化展</div>
-    </a>
+    </div>
     <div class="wrapper">
         <div class="side">
         </div>
         <div class="content"></div>
     </div>
 </div>
+<script>
+  $('#app .title').click(function () {
+    changePage('home')
+  })
+</script>
 </body>
 </html>
