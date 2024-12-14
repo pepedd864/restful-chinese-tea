@@ -123,6 +123,7 @@ function setMenuActive(elems, index) {
     $(elem).addClass('active')
 }
 
+
 $(document).ready(function () {
     initPage();
 });

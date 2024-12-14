@@ -15,28 +15,42 @@
     <div class="edit-form">
         <div class="edit-info" style="display: none">
             <div class="item">
-                <span>ID:</span>
-                <input type="text">
+                <label>
+                    <span>ID:</span>
+                    <input type="text">
+                </label>
             </div>
             <div class="item">
-                <span>分类编号:</span>
-                <input type="text">
+                <label>
+                    <span>分类编号:</span>
+                    <input type="text">
+                </label>
             </div>
             <div class="item">
-                <span>分类标题:</span>
-                <input type="text">
+                <span></span>
+                <label>
+                    <span>分类标题:</span>
+                    <input type="text">
+                </label>
             </div>
-            <div class="btn">刷新列表</div>
-            <div class="btn">添加记录</div>
-            <div class="btn">修改记录</div>
+            <button class="btn flash-btn">刷新列表</button>
+            <button class="btn add-btn">添加记录</button>
+            <button class="btn edit-btn">修改记录</button>
         </div>
         <div class="edit-icon">
-            <div class="item">
-                <span>ID:</span>
-                <input type="text">
+            <div class="left">
+                <div class="item">
+                    <label>
+                        <span>ID:</span>
+                        <input type="text">
+                    </label>
+                </div>
+                <input type="file" id="fileInput"/>
             </div>
-            <input type="file" id="fileInput"/>
-            <input type="submit" value="上传文件"/>
+            <div class="right">
+                <button class="btn">上传</button>
+                <button class="btn">取消</button>
+            </div>
         </div>
     </div>
     <div class="category-list">
@@ -51,53 +65,26 @@
     </div>
 </div>
 <script type="module">
-    import {getListItem} from './index.js'
-    import transformFileToBuffer from "../../js/utils/transformFileToBuffer.js";
-    import {uploadFile} from "../../js/apis/file.js";
-    import {getAllCategory, createCategory} from "../../js/apis/category.js";
+  import {getListItem, listItemClick, formInfoClick} from './index.js'
+  import transformFileToBuffer from "../../js/utils/transformFileToBuffer.js";
+  import {uploadFile} from "../../js/apis/file.js";
+  import {getAllCategory, createCategory} from "../../js/apis/category.js";
 
-    const contextPath = '${pageContext.request.contextPath}'
+  const contextPath = '${pageContext.request.contextPath}'
 
-    $(document).ready(async function () {
-        const editInfo = $('#app .edit-info')
-        const editIcon = $('#app .edit-icon')
-        const categoryList = $('#app .category-list table')
+  $(document).ready(async function () {
+    const categoryList = $('#app .category-list table')
 
-        const res = await getAllCategory(contextPath)
-        if (res.data) {
-            const listContent = res.data.map(item => '<tr>' + getListItem(contextPath, item) + '</tr>')
-            categoryList.append(listContent)
-        }
+    const res = await getAllCategory(contextPath)
+    if (res.data) {
+      const listContent = res.data.map(item => getListItem(contextPath, item))
+      categoryList.append(listContent)
+    }
 
-        // Add click event listeners to the "上传" and "编辑" buttons
-        $(document).on('click', '.upload-btn', function () {
-            const row = $(this).closest('tr');
-            const id = row.find('td:eq(0)').text();
-            const num = row.find('td:eq(1)').text();
-            const title = row.find('td:eq(2)').text();
+    listItemClick(contextPath)
+    formInfoClick(contextPath)
 
-            // Populate the edit form with the item data
-            const editIcon = $('#app .edit-icon');
-            editIcon.find('input[type="text"]').val(id);
-            editIcon.show();
-            $('#app .edit-info').hide();
-        });
-
-        $(document).on('click', '.edit-btn', function () {
-            const row = $(this).closest('tr');
-            const id = row.find('td:eq(0)').text();
-            const num = row.find('td:eq(1)').text();
-            const title = row.find('td:eq(2)').text();
-
-            // Populate the edit form with the item data
-            const editInfo = $('#app .edit-info');
-            editInfo.find('input:eq(0)').val(id);
-            editInfo.find('input:eq(1)').val(num);
-            editInfo.find('input:eq(2)').val(title);
-            editInfo.show();
-            $('#app .edit-icon').hide();
-        });
-    });
+  });
 </script>
 </body>
 </html>

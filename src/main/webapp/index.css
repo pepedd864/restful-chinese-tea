@@ -3,6 +3,11 @@
     padding: 0;
 }
 
+html {
+    --app-width: 135rem;
+    --app-height: 67.5rem;
+}
+
 html,
 body {
     overflow: hidden;
@@ -13,9 +18,11 @@ body {
 div,
 span,
 button,
+input,
+textarea,
 body {
     font-size: 1.5rem;
-    font-family: font1;
+    font-family: font1, serif;
 }
 
 a {
