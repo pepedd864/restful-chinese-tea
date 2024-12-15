@@ -55,7 +55,6 @@
     </div>
     <div class="category-list">
         <table>
-
         </table>
     </div>
 </div>
