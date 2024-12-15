@@ -101,6 +101,10 @@ export async function initExhibitsList() {
       confirm('确定删除?') && await deleteExhibits(dataItem.id) && window.location.reload()
     }
     if ($(this).hasClass('img-btn')) {
+      if (!data) {
+        alert('先新建一个展品')
+        return
+      }
       currentStatus = statusEnum.img
       exhibit.hide()
       editImg.show()
