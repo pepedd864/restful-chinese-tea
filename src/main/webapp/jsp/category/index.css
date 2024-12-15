@@ -1,6 +1,6 @@
 @charset "UTF-8";
 #app {
-  background: url("../../assets/bg/背景-中.jpg") no-repeat center center;
+  background: url("../../assets/bg/bg-middle.jpg") no-repeat center center;
   background-size: cover;
   height: calc(100% - 4rem);
   display: flex;
@@ -19,7 +19,7 @@
   border-radius: 0.7rem;
   box-shadow: 0.3rem 0.3rem 1rem #000;
   overflow: hidden;
-  background: url("../../assets/bg/按钮1.png") no-repeat center center;
+  background: url("../../assets/bg/btn1.png") no-repeat center center;
   background-size: cover;
 }
 #app .edit-form .edit-info {
@@ -44,7 +44,7 @@
   position: relative;
   flex: 1;
   width: 90%;
-  background: url("../../assets/bg/背景-左.jpg") no-repeat;
+  background: url("../../assets/bg/bg-left.jpg") no-repeat;
   background-size: cover;
   box-shadow: 0.3rem 0.3rem 1rem #000;
   border-radius: 0.7rem;
@@ -56,11 +56,11 @@
   border-spacing: unset;
 }
 #app .category-list table tr:has(th) {
-  background: url("../../assets/bg/背景-上.jpg") no-repeat;
+  background: url("../../assets/bg/bg-top.jpg") no-repeat;
   background-size: cover;
 }
 #app .category-list table tr:has(td):hover {
-  background: url("../../assets/bg/背景-上.jpg") no-repeat;
+  background: url("../../assets/bg/bg-top.jpg") no-repeat;
   background-size: cover;
 }
 #app .category-list table tr td, #app .category-list table tr th {
@@ -68,7 +68,7 @@
   text-align: center;
 }
 #app .category-list table tr img {
-  object-fit: cover;
+  object-fit: contain;
   width: 5rem;
   height: 5rem;
 }

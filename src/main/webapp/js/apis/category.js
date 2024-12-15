@@ -13,6 +13,21 @@ export function getAllCategory() {
   })
 }
 
+export function getCategoryById(data) {
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      url: contextPath + `/api/category/get/${data}`,
+      type: 'get',
+      success: function (response) {
+        resolve(response)
+      },
+      error: function (xhr, status, error) {
+        reject(error)
+      }
+    })
+  })
+}
+
 export function createCategory(data) {
   return new Promise((resolve, reject) => {
     $.ajax({

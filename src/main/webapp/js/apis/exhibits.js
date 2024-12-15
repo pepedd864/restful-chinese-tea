@@ -37,7 +37,7 @@ export function updateExhibits(data) {
   return new Promise((resolve, reject) => {
     $.ajax({
       url: contextPath + '/api/exhibits/update',
-      type: 'post',
+      type: 'put',
       data: JSON.stringify(data),
       contentType: 'application/json',
       success: function (response) {

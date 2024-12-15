@@ -1,50 +1,104 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    --app-width: 135rem;
-    --app-height: 67.5rem;
-}
-
-html,
+@charset "UTF-8";
 body {
-    overflow: hidden;
-    width: 100vw;
-    height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background: #000;
 }
 
-div,
-span,
-button,
-input,
-textarea,
-body {
-    font-size: 1.5rem;
-    font-family: font1, serif;
+#app {
+  position: relative;
+  flex-direction: column;
+  width: var(--app-width);
+  height: var(--app-height);
+  overflow: hidden;
 }
-
-a {
-    text-decoration: none;
+#app #loading {
+  position: absolute;
+  /*display: flex;*/
+  display: none;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  width: var(--app-width);
+  height: var(--app-height);
+  background: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  font-size: 5rem;
+  z-index: 9999;
 }
-
-@font-face {
-    font-family: font1;
-    src: url("./assets/fonts/HYShangWeiShouShuW.ttf") format('truetype');
+#app .title {
+  display: flex;
+  align-items: center;
+  background: url("assets/bg/bg-top.jpg") no-repeat;
+  background-size: cover;
+  height: 7rem;
+  width: 100%;
+  padding-left: 1rem;
+  cursor: pointer;
 }
-
-@font-face {
-    font-family: font2;
-    src: url("./assets/fonts/向佳红毛笔行书.ttf") format('truetype');
+#app .title .icon {
+  height: 6rem;
+  width: 7rem;
+  background: url("./assets/logo.png") no-repeat;
+  background-size: cover;
+  opacity: 0.5;
 }
-
-@font-face {
-    font-family: font3;
-    src: url("./assets/fonts/禹卫书法云墨简体.ttf") format('truetype');
+#app .title .text {
+  margin-left: 2rem;
+  font-size: 3.5rem;
+  color: #000000;
+  opacity: 0.5;
 }
-
-@font-face {
-    font-family: font4;
-    src: url("./assets/fonts/站酷妙典风云体.ttf") format('truetype');
+#app .wrapper {
+  display: flex;
+  position: relative;
+  height: calc(100% - 7rem);
+}
+#app .wrapper .side {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 1rem;
+  gap: 1rem;
+  color: #fff;
+  background-size: cover;
+  background: url("assets/bg/bg-left.jpg") no-repeat;
+  width: 10rem;
+  height: 100%;
+}
+#app .wrapper .side .btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 8rem;
+  height: 8rem;
+  cursor: pointer;
+}
+#app .wrapper .side .btn img {
+  object-fit: contain;
+  height: 6.5rem;
+  width: 6.5rem;
+  transition: filter 0.3s;
+}
+#app .wrapper .side .btn .text {
+  font-size: 1.5rem;
+}
+#app .wrapper .side .btn.active img {
+  filter: drop-shadow(0 0 1rem white) drop-shadow(0 0 1rem white);
+}
+#app .wrapper .content {
+  position: relative;
+  width: calc(100% - 7rem);
+  height: 100%;
+  background: url("assets/bg/bg-middle.jpg") no-repeat center center;
+  background-size: cover;
+  overflow: hidden;
+}
+#app .wrapper .content iframe {
+  width: 100%;
+  height: 100%;
 }
