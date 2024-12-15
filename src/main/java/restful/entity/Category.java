@@ -21,6 +21,7 @@ import lombok.EqualsAndHashCode;
  * 分类表
  */
 public class Category extends IdEntity {
+  private static final String DEFAULT_ICON = "/api/file/display/default-icon.png";
   /**
    * 分类标题
    */
@@ -35,12 +36,12 @@ public class Category extends IdEntity {
   /**
    * 分类图标
    */
-  private String icon;
+  private String icon = DEFAULT_ICON;
 
   public void setDataWithoutId(Category category) {
     this.title = category.title;
     this.num = category.num;
-    if (category.icon != null)
+    if (category.icon != null && !category.icon.equals(DEFAULT_ICON))
       this.icon = category.icon;
   }
 }
