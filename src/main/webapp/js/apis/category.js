@@ -1,4 +1,4 @@
-export function getAllCategory(contextPath) {
+export function getAllCategory() {
   return new Promise((resolve, reject) => {
     $.ajax({
       url: contextPath + '/api/category/get/All',
@@ -13,7 +13,7 @@ export function getAllCategory(contextPath) {
   })
 }
 
-export function createCategory(contextPath, data) {
+export function createCategory(data) {
   return new Promise((resolve, reject) => {
     $.ajax({
       url: contextPath + '/api/category/create',
@@ -30,7 +30,7 @@ export function createCategory(contextPath, data) {
   })
 }
 
-export function updateCategory(contextPath, data) {
+export function updateCategory(data) {
   return new Promise((resolve, reject) => {
     $.ajax({
       url: contextPath + '/api/category/update',
@@ -47,7 +47,7 @@ export function updateCategory(contextPath, data) {
   })
 }
 
-export function deleteCategory(contextPath, data) {
+export function deleteCategory(data) {
   return new Promise((resolve, reject) => {
     $.ajax({
       url: contextPath + '/api/category/delete',

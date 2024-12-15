@@ -1,6 +1,19 @@
-import {createCategory, deleteCategory, updateCategory} from "../../js/apis/category.js";
+import {createCategory, deleteCategory, getAllCategory, updateCategory} from "../../js/apis/category.js";
+import {transformFileToBuffer} from "../../js/utils/utils.js";
+import {uploadFile} from "../../js/apis/file.js";
 
-export function getListItem(contextPath, item) {
+function getListTitle() {
+  return `
+  <tr>
+    <th>分类图标</th>
+    <th>分类编号</th>
+    <th>分类标题</th>
+    <th>操作</th>
+</tr>
+`
+}
+
+function getListItem(item) {
   return `
 <tr data-id="${item.id}">
 <td>
@@ -21,7 +34,18 @@ ${item.title}
 `
 }
 
-export function listItemClick(contextPath) {
+export async function generateCategoryList() {
+  const categoryList = $('#app .category-list table')
+
+  const res = await getAllCategory()
+  if (res.data) {
+    const listTitle = getListTitle()
+    const listContent = res.data.map(item => getListItem(item))
+    categoryList.html(listTitle + listContent)
+  }
+}
+
+export function listItemClick() {
   $(document).on('click', '.category-list .btn', async function () {
     const row = $(this).closest('tr');
     const id = row.data('id');
@@ -45,9 +69,14 @@ export function listItemClick(contextPath) {
     }
 
     if ($(this).hasClass('delete-btn')) {
+      // 如果只有一行，不允许删除
+      if ($('#app .category-list table').find('tr').length === 2) {
+        alert('至少保留一个分类')
+        return
+      }
       const result = confirm('确定删除？')
       if (result) {
-        const res = await deleteCategory(contextPath, id)
+        const res = await deleteCategory(id)
         if (res.code === 0) {
           row.remove();
         }
@@ -56,8 +85,8 @@ export function listItemClick(contextPath) {
   });
 }
 
-export function formInfoClick(contextPath) {
-  $('#app .edit-info button').click(function () {
+export function formInfoClick() {
+  $('#app .edit-info button').click(async function () {
     const editInfo = $('#app .edit-info');
     const id = editInfo.find('input:eq(0)').val()
     const num = editInfo.find('input:eq(1)').val();
@@ -69,14 +98,50 @@ export function formInfoClick(contextPath) {
     }
     console.log($(this))
     if ($(this).hasClass('add-btn')) {
-      createCategory(contextPath, data)
-      window.parent.generateMenus(contextPath)
-      // TODO
+      await createCategory(data)
+      await window.parent.generateMenus()
+      await generateCategoryList()
     }
     if ($(this).hasClass('edit-btn')) {
-      updateCategory(contextPath, data)
-      window.parent.generateMenus(contextPath)
-      // TODO
+      await updateCategory(data)
+      await window.parent.generateMenus()
+      await generateCategoryList()
     }
+  })
+}
+
+export async function formIconClick() {
+  $('#app .edit-icon button').click(async function () {
+    const editIcon = $('#app .edit-icon');
+    const id = editIcon.find('input[type="text"]').val();
+    if ($(this).hasClass('upload-btn')) {
+      const file = editIcon.find('input[type="file"]')[0].files[0];
+      if (!file) {
+        alert('请选择文件')
+        return;
+      }
+      const buffer = await transformFileToBuffer(file)
+      console.log(buffer)
+      const res = await uploadFile(file.name, buffer)
+      if (res.code === 0) {
+        const icon = res.data;
+        const data = {
+          id,
+          icon
+        }
+        const r = await updateCategory(data)
+        if (r.code === 0) {
+          editIcon.hide();
+          $('#app .edit-info').show()
+        }
+        await window.parent.generateMenus()
+        await generateCategoryList()
+      }
+    }
+    if ($(this).hasClass('cancel-btn')) {
+      editIcon.hide();
+      $('#app .edit-info').show()
+    }
+
   })
 }
