@@ -10,7 +10,7 @@ window.generateMenus = async function () {
     icon: '/api/file/display/default-icon.png'
   }, ...data)
   const btns = menus.map((item) => {
-    return '<div class="btn" data-page="' + (item.num === 'manage' ? 'category' : 'exhibits?num=' + item?.num) + '">' +
+    return '<div class="btn" data-page="' + (item.num === 'manage' ? 'category' : 'exhibits?categoryId=' + item?.id) + '">' +
       '<img src="' + contextPath + item.icon + '"/>' +
       '<div class="text">' + item.title + '</div>' +
       '</div>'

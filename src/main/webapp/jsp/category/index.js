@@ -79,6 +79,7 @@ export function listItemClick() {
         const res = await deleteCategory(id)
         if (res.code === 0) {
           row.remove();
+          await window.parent.generateMenus()
         }
       }
     }
@@ -96,8 +97,14 @@ export function formInfoClick() {
       num,
       title
     }
-    console.log($(this))
+    if ($(this).hasClass('refresh-btn')) {
+      await generateCategoryList()
+    }
     if ($(this).hasClass('add-btn')) {
+      if (!num || !title) {
+        alert('请填写编号和标题')
+        return
+      }
       await createCategory(data)
       await window.parent.generateMenus()
       await generateCategoryList()
@@ -122,21 +129,18 @@ export async function formIconClick() {
       }
       const buffer = await transformFileToBuffer(file)
       console.log(buffer)
-      const res = await uploadFile(file.name, buffer)
-      if (res.code === 0) {
-        const icon = res.data;
-        const data = {
-          id,
-          icon
-        }
-        const r = await updateCategory(data)
-        if (r.code === 0) {
-          editIcon.hide();
-          $('#app .edit-info').show()
-        }
-        await window.parent.generateMenus()
-        await generateCategoryList()
+      const {data: icon} = await uploadFile(file.name, buffer)
+      if (!icon) return
+      const data = {
+        id,
+        icon
       }
+      const r = await updateCategory(data)
+      if (!r.data) return
+      editIcon.hide();
+      $('#app .edit-info').show()
+      await window.parent.generateMenus()
+      await generateCategoryList()
     }
     if ($(this).hasClass('cancel-btn')) {
       editIcon.hide();

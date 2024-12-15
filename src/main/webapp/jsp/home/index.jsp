@@ -7,7 +7,7 @@
     <script src="../iframeInit.js"></script>
     <script src="../../js/jquery/jquery.min.js"></script>
     <script type="module" src="../../init.js"></script>
-    <link rel="stylesheet" href="../../index.css"/>
+    <link rel="stylesheet" href="../../init.css"/>
     <link rel="stylesheet" href="./index.css">
 </head>
 <body>

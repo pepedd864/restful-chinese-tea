@@ -7,7 +7,7 @@
     <script src="../iframeInit.js"></script>
     <script src="../../js/jquery/jquery.min.js"></script>
     <script type="module" src="../../init.js"></script>
-    <link rel="stylesheet" href="../../index.css">
+    <link rel="stylesheet" href="../../init.css">
     <link rel="stylesheet" href="./index.css">
 </head>
 <body>
@@ -33,7 +33,7 @@
                     <input type="text">
                 </label>
             </div>
-            <button class="btn flash-btn">刷新列表</button>
+            <button class="btn refresh-btn">刷新列表</button>
             <button class="btn add-btn">添加记录</button>
             <button class="btn edit-btn">修改记录</button>
         </div>

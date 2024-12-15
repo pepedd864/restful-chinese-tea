@@ -1,7 +1,6 @@
-@charset "UTF-8";
 #app {
   position: relative;
-  background: url("../../assets/bg/背景-中.jpg") no-repeat center center;
+  background: url("../../assets/bg/bg-middle.jpg") no-repeat center center;
   background-size: cover;
   display: flex;
   height: 100%;
@@ -20,7 +19,7 @@
   overflow: hidden;
 }
 #app .wrapper .side {
-  background: url("../../assets/bg/背景-左.jpg") no-repeat;
+  background: url("../../assets/bg/bg-left.jpg") no-repeat;
   background-size: cover;
   height: 100%;
   display: flex;
@@ -43,15 +42,12 @@
   font-size: 4rem;
   z-index: 1;
 }
-#app .wrapper .side .btn:hover:after {
-  filter: drop-shadow(0.5rem 0.5rem 1rem #ff0000);
-}
 #app .wrapper .side .btn:after {
   position: absolute;
   content: "";
   height: 6rem;
   width: 20rem;
-  background: url("../../assets/bg/按钮1.png") no-repeat center center;
+  background: url("../../assets/bg/btn1.png") no-repeat center center;
   background-size: cover;
   z-index: 0;
   transform: rotate(90deg);
@@ -61,41 +57,46 @@
 #app .content {
   position: relative;
   flex: 1;
+  height: 100%;
+  background: url("../../assets/bg/bg-top.jpg") no-repeat center center;
+  background-size: cover;
+}
+#app .content .exhibits {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100%;
-  background: url("../../assets/bg/背景-上.jpg") no-repeat center center;
-  background-size: cover;
+  width: 100%;
 }
-#app .content .info {
+#app .content .exhibits .info {
   position: absolute;
   top: 3rem;
   left: 3rem;
 }
-#app .content .info div {
+#app .content .exhibits .info div {
   font-size: 2.3rem;
   margin-bottom: 1.5rem;
 }
-#app .content .btn-group {
+#app .content .exhibits .btn-group {
   position: absolute;
   right: 3rem;
   top: 3rem;
 }
-#app .content .btn-group .btn {
+#app .content .exhibits .btn-group .btn {
   font-size: 2.3rem;
   padding: 1.5rem;
   cursor: pointer;
-  background: url("../../assets/bg/按钮2.png") no-repeat center center;
+  background: url("../../assets/bg/btn2.png") no-repeat center center;
   background-size: contain;
   margin-bottom: 1rem;
   border-radius: 100%;
   transition: box-shadow 0.3s;
 }
-#app .content .btn-group .btn:hover {
+#app .content .exhibits .btn-group .btn:hover {
   box-shadow: 0 0 1rem #7aa567;
 }
-#app .content img {
+#app .content .exhibits img {
   position: relative;
   margin-top: 5%;
   height: 40%;
@@ -104,7 +105,38 @@
   margin-bottom: 2rem;
   filter: drop-shadow(0.5rem 0.5rem 1rem #000);
 }
-#app .content .title {
+#app .content .exhibits .title {
   position: relative;
   font-size: 3.5rem;
+}
+#app .content .edit-form {
+  padding: 1.5rem;
+}
+#app .content .edit-form .line {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+#app .content .edit-form textarea {
+  width: calc(100% - 2rem);
+  margin: 0 1rem;
+  resize: none;
+}
+#app .content .edit-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  height: 100%;
+}
+#app .content .edit-image img {
+  object-fit: contain;
+  width: 15rem;
+  height: 15rem;
+}
+#app .content .edit-image .bottom {
+  display: flex;
+  gap: 2rem;
 }

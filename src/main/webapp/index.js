@@ -27,21 +27,6 @@ function strToURL(str) {
   }
 }
 
-function urlToStr(urlObject) {
-  // {path,param:[{key,value}] -> path?param1=value1&param2=value2
-  if (!urlObject || typeof urlObject !== 'object') return;
-  let queryString = urlObject.path;
-
-  if (urlObject.params && Array.isArray(urlObject.params) && urlObject.params.length > 0) {
-    const params = urlObject.params.map(param => {
-      return `${encodeURIComponent(param.key)}=${encodeURIComponent(param.value)}`;
-    });
-    queryString = queryString ? queryString += '?' + params.join('&') : params.join('&')
-  }
-  console.log('queryString', queryString)
-  return queryString;
-}
-
 function rem() {
   wWidth = window.innerWidth;
   wHeight = window.innerHeight;
@@ -56,18 +41,17 @@ function getFontSize() {
   if (hfs * 120 <= wWidth) return hfs + "px";
 }
 
-function getIframe(paramStr) {
-  console.log(paramStr)
+function getIframe() {
   iframe = $(
     `<iframe id="page-viewer" src="${
-      pages[current] + '?' + (paramStr ? paramStr + '&' : '')
+      pages[current]
     }" frameborder="0"></iframe>`
   );
   return iframe;
 }
 
-function mountPage(paramStr) {
-  $("#app .content").html(getIframe(paramStr));
+function mountPage() {
+  $("#app .content").html(getIframe());
 }
 
 function initPage() {
@@ -91,9 +75,9 @@ function initPage() {
     // })
     // console.log(index)
     // setMenuActive(elems, index)
-    const num = url.searchParams.get('num')
-    console.log('init', num)
-    changePage(`${toPage + (num ? '?num=' + num : '')}`);
+    const categoryId = url.searchParams.get('categoryId')
+    console.log('init', categoryId)
+    changePage(`${toPage + (categoryId ? '?categoryId=' + categoryId : '')}`);
     return;
   }
   mountPage();
@@ -105,14 +89,14 @@ function changePage(toPage = "home") {
   const toPageUrl = strToURL(toPage)
   toPage = toPageUrl.path
   const params = toPageUrl.params
-  if (toPage === current && url.searchParams.get('num') === params?.[0].value) return;
+  if (toPage === current && url.searchParams.get('categoryId') === params?.[0].value) return;
   if (Object.keys(pages).includes(toPage)) current = toPage;
   url.searchParams.set("page", current);
-  url.searchParams.delete('num')
-  params?.[0].value && url.searchParams.set('num', params[0].value)
+  url.searchParams.delete('categoryId')
+  params?.[0].value && url.searchParams.set('categoryId', params[0].value)
   history.replaceState(null, null, url);
   toPageUrl.path = ''
-  mountPage(urlToStr(toPageUrl));
+  mountPage();
 }
 
 function setMenuActive(elems, index) {
