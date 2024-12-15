@@ -4,16 +4,16 @@
 <head>
     <title>分类页面</title>
     <meta charset="UTF-8">
-    <script src="../iframe.js"></script>
+    <script src="../iframeInit.js"></script>
     <script src="../../js/jquery/jquery.min.js"></script>
-    <script src="../../init.js"></script>
+    <script type="module" src="../../init.js"></script>
     <link rel="stylesheet" href="../../index.css">
     <link rel="stylesheet" href="./index.css">
 </head>
 <body>
 <div id="app">
     <div class="edit-form">
-        <div class="edit-info" style="display: none">
+        <div class="edit-info">
             <div class="item">
                 <label>
                     <span>ID:</span>
@@ -37,7 +37,7 @@
             <button class="btn add-btn">添加记录</button>
             <button class="btn edit-btn">修改记录</button>
         </div>
-        <div class="edit-icon">
+        <div class="edit-icon" style="display: none">
             <div class="left">
                 <div class="item">
                     <label>
@@ -48,41 +48,26 @@
                 <input type="file" id="fileInput"/>
             </div>
             <div class="right">
-                <button class="btn">上传</button>
-                <button class="btn">取消</button>
+                <button class="btn upload-btn">上传</button>
+                <button class="btn cancel-btn">取消</button>
             </div>
         </div>
     </div>
     <div class="category-list">
         <table>
-            <tr>
-                <th>分类图标</th>
-                <th>分类编号</th>
-                <th>分类标题</th>
-                <th>操作</th>
-            </tr>
+
         </table>
     </div>
 </div>
 <script type="module">
-  import {getListItem, listItemClick, formInfoClick} from './index.js'
-  import transformFileToBuffer from "../../js/utils/transformFileToBuffer.js";
-  import {uploadFile} from "../../js/apis/file.js";
-  import {getAllCategory, createCategory} from "../../js/apis/category.js";
-
-  const contextPath = '${pageContext.request.contextPath}'
+  import {generateCategoryList, listItemClick, formInfoClick, formIconClick} from './index.js'
 
   $(document).ready(async function () {
-    const categoryList = $('#app .category-list table')
+    await generateCategoryList()
 
-    const res = await getAllCategory(contextPath)
-    if (res.data) {
-      const listContent = res.data.map(item => getListItem(contextPath, item))
-      categoryList.append(listContent)
-    }
-
-    listItemClick(contextPath)
-    formInfoClick(contextPath)
+    listItemClick()
+    formInfoClick()
+    formIconClick()
 
   });
 </script>

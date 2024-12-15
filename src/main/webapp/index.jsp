@@ -6,16 +6,16 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="index.css"/>
     <script src="./js/jquery/jquery.min.js"></script>
-    <script src="./init.js"></script>
+    <script type="module" src="./init.js"></script>
     <script src="index.js"></script>
     <script type="module">
       import {getAllCategory} from "./js/apis/category.js";
 
-      const contextPath = '${pageContext.request.contextPath}'
+      window.contextPath = '${pageContext.request.contextPath}'
       console.log('contextPath:', contextPath)
-      const res = await getAllCategory(contextPath)
+      const res = await getAllCategory()
       if (res.data) {
-        generateMenus(contextPath, res.data)
+        generateMenus(res.data)
       }
       console.log(res)
     </script>

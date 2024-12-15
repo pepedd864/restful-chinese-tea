@@ -1,7 +1,9 @@
-var menus = []
+import {getAllCategory} from './js/apis/category.js'
 
-function generateMenus(contextPath, data) {
-  menus = []
+window.generateMenus = async function () {
+  const {data} = await getAllCategory()
+  if (!data) return
+  let menus = []
   menus.push({
     title: '分类管理',
     num: 'manage',
@@ -27,11 +29,9 @@ function generateMenus(contextPath, data) {
 
 $.ajaxSetup({
   beforeSend: function (xhr, settings) {
-    // $('#loading').show();
     return true;
   },
   complete: function (xhr, textStatus) {
-    // $('#loading').hide();
     xhr.then(function (e) {
       if (e.code === 0) return
       alert(e.description)

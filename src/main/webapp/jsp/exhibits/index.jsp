@@ -4,9 +4,9 @@
 <head>
     <title>展品页面</title>
     <meta charset="UTF-8">
-    <script src="../iframe.js"></script>
+    <script src="../iframeInit.js"></script>
     <script src="../../js/jquery/jquery.min.js"></script>
-    <script src="../../init.js"></script>
+    <script type="module" src="../../init.js"></script>
     <link rel="stylesheet" href="../../index.css">
     <link rel="stylesheet" href="./index.css">
 </head>
@@ -32,8 +32,36 @@
             <div class="title">请先添加数据</div>
             <div class="desc"></div>
         </div>
-        <div class="edit-form"></div>
-        <div class="edit-image"></div>
+        <div class="edit-form">
+            <label for="">
+                <span>展品编号:</span>
+                <input type="text">
+            </label>
+            <label>
+                <span>展品标题:</span>
+                <input type="text">
+            </label>
+            <label>
+                <span>展品分类:</span>
+                <span>新的分类</span>
+            </label>
+            <div class="btn-group">
+                <button class="btn add-btn">添加记录</button>
+                <button class="btn cancel-btn">取消</button>
+            </div>
+            <label>
+                <span>展品描述:</span>
+                <textarea name="" id="" cols="30" rows="10"></textarea>
+            </label>
+        </div>
+        <div class="edit-image">
+            <input type="file">
+            <img src="" alt="">
+            <div class="btn-group">
+                <button class="btn upload-btn">上传</button>
+                <button class="btn cancel-btn">取消</button>
+            </div>
+        </div>
         <div class="side">
             <div class="btn"><span>后一项</span></div>
         </div>

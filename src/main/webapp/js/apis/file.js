@@ -1,4 +1,4 @@
-export function uploadFile(contextPath, fileName, buffer) {
+export function uploadFile(fileName, buffer) {
     return new Promise((resolve, reject) => {
         $.ajax({
             url: contextPath + '/api/file/upload?fileName=' + fileName,

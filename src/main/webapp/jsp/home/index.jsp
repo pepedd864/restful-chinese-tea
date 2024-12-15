@@ -4,9 +4,9 @@
 <head>
     <title>首页</title>
     <meta charset="UTF-8">
-    <script src="../iframe.js"></script>
+    <script src="../iframeInit.js"></script>
     <script src="../../js/jquery/jquery.min.js"></script>
-    <script src="../../init.js"></script>
+    <script type="module" src="../../init.js"></script>
     <link rel="stylesheet" href="../../index.css"/>
     <link rel="stylesheet" href="./index.css">
 </head>
