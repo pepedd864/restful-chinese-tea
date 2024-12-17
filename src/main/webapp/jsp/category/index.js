@@ -98,7 +98,7 @@ export function formInfoClick() {
       title
     }
     if ($(this).hasClass('refresh-btn')) {
-      await generateCategoryList()
+      window.location.reload()
     }
     if ($(this).hasClass('add-btn')) {
       if (!num || !title) {
@@ -107,12 +107,12 @@ export function formInfoClick() {
       }
       await createCategory(data)
       await window.parent.generateMenus()
-      await generateCategoryList()
+      window.location.reload()
     }
     if ($(this).hasClass('edit-btn')) {
       await updateCategory(data)
       await window.parent.generateMenus()
-      await generateCategoryList()
+      window.location.reload()
     }
   })
 }

@@ -57,6 +57,9 @@
 #app .content {
   position: relative;
   flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100%;
   background: url("../../assets/bg/bg-top.jpg") no-repeat center center;
   background-size: cover;
@@ -111,16 +114,31 @@
 }
 #app .content .edit-form {
   padding: 1.5rem;
+  background: url("../../assets/bg/exhibits.jpg") no-repeat center center;
+  background-size: cover;
+  border-radius: 1.5rem;
+  box-shadow: 0.3rem 0.3rem 1rem #000;
+  margin: 1rem;
+  box-sizing: border-box;
 }
 #app .content .edit-form .line {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
+}
+#app .content .edit-form .line input {
+  width: 12rem;
+  background: url("../../assets/bg/text-bg.jpg") no-repeat center center;
+  background-size: cover;
+  border: 2px solid #9bad97;
+  border-radius: 0.2rem;
 }
 #app .content .edit-form textarea {
   width: calc(100% - 2rem);
   margin: 0 1rem;
   resize: none;
+  background: url("../../assets/bg/text-bg.jpg") no-repeat center center;
+  background-size: cover;
 }
 #app .content .edit-image {
   display: flex;
@@ -130,11 +148,17 @@
   gap: 2rem;
   width: 100%;
   height: 100%;
+  padding: 1.5rem;
+  background: url("../../assets/bg/exhibits.jpg") no-repeat center center;
+  background-size: cover;
+  border-radius: 1.5rem;
+  box-shadow: 0.3rem 0.3rem 1rem #000;
 }
 #app .content .edit-image img {
   object-fit: contain;
   width: 15rem;
   height: 15rem;
+  filter: drop-shadow(0.5rem 0.5rem 1rem #000);
 }
 #app .content .edit-image .bottom {
   display: flex;
