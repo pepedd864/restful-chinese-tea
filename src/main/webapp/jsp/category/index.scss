@@ -24,6 +24,7 @@
     .edit-info {
       display: flex;
       justify-content: space-around;
+      align-items: center;
       width: 100%;
 
       input {
@@ -34,6 +35,7 @@
     .edit-icon {
       display: flex;
       justify-content: space-around;
+      align-items: center;
       width: 100%;
 
       .right,
@@ -53,6 +55,7 @@
     box-shadow: 0.3rem 0.3rem 1rem #000;
     border-radius: 0.7rem;
     overflow: hidden;
+    overflow-y: auto;
 
     table {
       width: 100%;
@@ -68,6 +71,10 @@
         &:has(td):hover {
           background: url("../../assets/bg/bg-top.jpg") no-repeat;
           background-size: cover;
+        }
+
+        td:last-child {
+          width: 30rem;
         }
 
         td, th {

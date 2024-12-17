@@ -29,6 +29,18 @@ a {
     text-decoration: none;
 }
 
+button.btn {
+    background: url("./assets/bg/btn1.png") no-repeat center center;
+    background-size: contain;
+    border: none;
+    font-size: 1.5rem;
+    width: 7rem;
+    padding: 1rem 0.5rem;
+    box-sizing: border-box;
+    filter: drop-shadow(0.3rem 0.3rem 0.5rem #000000);
+    cursor: pointer;
+}
+
 @font-face {
     font-family: font1;
     src: url("./assets/fonts/HYShangWeiShouShuW.ttf") format('truetype');
@@ -47,4 +59,21 @@ a {
 @font-face {
     font-family: font4;
     src: url("./assets/fonts/站酷妙典风云体.ttf") format('truetype');
+}
+
+/* 滚动条轨道 */
+::-webkit-scrollbar {
+    width: 6px; /* 垂直滚动条宽度 */
+    height: 6px; /* 水平滚动条高度 */
+}
+
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+    background-color: #9bad97; /* 滑块颜色 */
+    border-radius: 5px; /* 滑块圆角 */
+}
+
+/* 滚动条轨道（背景） */
+::-webkit-scrollbar-track {
+    background-color: #bbc8bf; /* 轨道颜色 */
 }

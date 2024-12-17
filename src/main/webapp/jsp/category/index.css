@@ -1,4 +1,3 @@
-@charset "UTF-8";
 #app {
   background: url("../../assets/bg/bg-middle.jpg") no-repeat center center;
   background-size: cover;
@@ -25,6 +24,7 @@
 #app .edit-form .edit-info {
   display: flex;
   justify-content: space-around;
+  align-items: center;
   width: 100%;
 }
 #app .edit-form .edit-info input {
@@ -33,6 +33,7 @@
 #app .edit-form .edit-icon {
   display: flex;
   justify-content: space-around;
+  align-items: center;
   width: 100%;
 }
 #app .edit-form .edit-icon .right,
@@ -49,6 +50,7 @@
   box-shadow: 0.3rem 0.3rem 1rem #000;
   border-radius: 0.7rem;
   overflow: hidden;
+  overflow-y: auto;
 }
 #app .category-list table {
   width: 100%;
@@ -62,6 +64,9 @@
 #app .category-list table tr:has(td):hover {
   background: url("../../assets/bg/bg-top.jpg") no-repeat;
   background-size: cover;
+}
+#app .category-list table tr td:last-child {
+  width: 30rem;
 }
 #app .category-list table tr td, #app .category-list table tr th {
   height: 6rem;
