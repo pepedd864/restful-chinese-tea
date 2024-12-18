@@ -34,7 +34,7 @@ export async function initExhibitsList() {
       // 设置详细信息
       exhibit.find('.img').attr('src', contextPath + dataItem.img)
       exhibit.find('.title').text(dataItem.title)
-      exhibit.find('.desc').text(dataItem.description)
+      exhibit.find('.desc').html(dataItem.description)
       // exhibit.css('backface-visibility','visible')
       exhibit.css('transform', 'rotateY(180deg')
       exhibit.one('transitionend', function () {
