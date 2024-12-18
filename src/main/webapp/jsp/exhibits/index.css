@@ -110,7 +110,7 @@
   transition: filter 0.3s;
 }
 #app .content .exhibits .btn-group .btn:hover {
-  filter: drop-shadow(0 0 2rem #7aa567);
+  filter: drop-shadow(0.3rem 0.3rem 2rem #fff);
 }
 #app .content .exhibits img {
   position: relative;
