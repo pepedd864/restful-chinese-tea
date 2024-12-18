@@ -46,7 +46,7 @@
 
         &:hover {
           &:after {
-            //filter: drop-shadow(0.5rem 0.5rem 1rem #ff0000);
+            filter: drop-shadow(0.5rem -0.5rem 1rem #000);
           }
         }
 
@@ -59,7 +59,7 @@
           background-size: cover;
           z-index: 0;
           transform: rotate(90deg);
-          filter: drop-shadow(0.5rem 0.5rem 1rem #000);
+          filter: drop-shadow(0.5rem -0.5rem 0.3rem #000);
           transition: filter 0.3s;
         }
       }
@@ -108,10 +108,10 @@
           background-size: contain;
           margin-bottom: 1rem;
           border-radius: 100%;
-          transition: box-shadow 0.3s;
+          transition: filter 0.3s;
 
           &:hover {
-            box-shadow: 0 0 1rem #7aa567;
+            filter: drop-shadow(0 0 1rem #7aa567);
           }
         }
       }

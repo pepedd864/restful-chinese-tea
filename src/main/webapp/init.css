@@ -37,8 +37,13 @@ button.btn {
     width: 7rem;
     padding: 1rem 0.5rem;
     box-sizing: border-box;
-    filter: drop-shadow(0.3rem 0.3rem 0.5rem #000000);
+    filter: drop-shadow(0.3rem 0.3rem 0.3rem #000000);
+    transition: filter 0.3s;
     cursor: pointer;
+}
+
+button.btn:hover {
+    filter: drop-shadow(0.3rem 0.3rem 0.5rem #000000);
 }
 
 @font-face {
