@@ -129,6 +129,8 @@
   margin: 1rem 2rem;
   flex: 1;
   overflow-y: auto;
+}
+#app .content .exhibits .desc, #app .content .exhibits .desc div, #app .content .exhibits .desc span {
   font-family: font2, serif;
 }
 #app .content .edit-form {

@@ -147,7 +147,10 @@
         margin: 1rem 2rem;
         flex: 1;
         overflow-y: auto;
-        font-family: font2, serif;
+
+        &, div, span {
+          font-family: font2, serif;
+        }
       }
     }
 

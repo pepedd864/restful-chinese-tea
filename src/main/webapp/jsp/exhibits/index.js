@@ -35,11 +35,13 @@ export async function initExhibitsList() {
       exhibit.find('.img').attr('src', contextPath + dataItem.img)
       exhibit.find('.title').text(dataItem.title)
       exhibit.find('.desc').html(dataItem.description)
-      // exhibit.css('backface-visibility','visible')
+      exhibit.css('backface-visibility', 'visible')
       exhibit.css('transform', 'rotateY(180deg')
       exhibit.one('transitionend', function () {
-        // exhibit.css('backface-visibility','hidden')
         exhibit.css('transform', 'rotateY(0deg)');
+        exhibit.one('transitionend', function () {
+          exhibit.css('backface-visibility', 'hidden')
+        })
       });
     }
 
