@@ -34,7 +34,13 @@ export async function initExhibitsList() {
       // 设置详细信息
       exhibit.find('.img').attr('src', contextPath + dataItem.img)
       exhibit.find('.title').text(dataItem.title)
-      exhibit.find('.desc').text(dataItem.description)
+      exhibit.find('.desc').html(dataItem.description)
+      // exhibit.css('backface-visibility','visible')
+      exhibit.css('transform', 'rotateY(180deg')
+      exhibit.one('transitionend', function () {
+        // exhibit.css('backface-visibility','hidden')
+        exhibit.css('transform', 'rotateY(0deg)');
+      });
     }
 
     setInfo()
@@ -78,8 +84,8 @@ export async function initExhibitsList() {
   $(btnGroup).on('click', '.btn', async function () {
     if ($(this).hasClass('add-btn')) {
       currentStatus = statusEnum.add
-      exhibit.css('transform','rotateY(180deg)')
-      editForm.css('transform','rotateY(0deg)')
+      exhibit.css('transform', 'rotateY(180deg)')
+      editForm.css('transform', 'rotateY(0deg)')
       setEditForm(statusEnum.add)
     }
     if ($(this).hasClass('edit-btn')) {
@@ -88,8 +94,8 @@ export async function initExhibitsList() {
         return
       }
       currentStatus = statusEnum.edit
-      exhibit.css('transform','rotateY(180deg)')
-      editForm.css('transform','rotateY(0deg)')
+      exhibit.css('transform', 'rotateY(180deg)')
+      editForm.css('transform', 'rotateY(0deg)')
       // 设置表单值
       setEditForm(statusEnum.edit)
     }
@@ -106,8 +112,8 @@ export async function initExhibitsList() {
         return
       }
       currentStatus = statusEnum.img
-      exhibit.css('transform','rotateY(180deg)')
-      editImg.css('transform','rotateY(0deg)')
+      exhibit.css('transform', 'rotateY(180deg)')
+      editImg.css('transform', 'rotateY(0deg)')
       editImg.find('img').attr('src', contextPath + dataItem.img)
     }
   })
@@ -115,15 +121,15 @@ export async function initExhibitsList() {
   $(editForm).on('click', '.btn', async function () {
     if ($(this).hasClass('cancel-btn')) {
       currentStatus = statusEnum.list
-      editForm.css('transform','rotateY(180deg)')
-      exhibit.css('transform','rotateY(0deg)')
+      editForm.css('transform', 'rotateY(180deg)')
+      exhibit.css('transform', 'rotateY(0deg)')
     }
     if ($(this).hasClass('edit-btn')) {
       const num = $('input#num').val()
       const title = $('input#title').val()
       const description = $('textarea#desc').val()
       const req = {num, title, description, categoryId}
-      if (dataItem?.id) {
+      if (currentStatus === statusEnum.edit) {
         await updateExhibits({
           id: dataItem.id,
           ...req
@@ -137,8 +143,8 @@ export async function initExhibitsList() {
   $(editImg).on('click', '.btn', async function () {
     if ($(this).hasClass('cancel-btn')) {
       currentStatus = statusEnum.list
-      editImg.css('transform','rotateY(180deg)')
-      exhibit.css('transform','rotateY(0deg)')
+      editImg.css('transform', 'rotateY(180deg)')
+      exhibit.css('transform', 'rotateY(0deg)')
     }
     if ($(this).hasClass('upload-btn')) {
       const file = editImg.find('input[type="file"]')[0].files[0];
@@ -155,8 +161,8 @@ export async function initExhibitsList() {
       }
       const {data: r} = await updateExhibits(data)
       if (!r) return
-      editImg.css('transform','rotateY(180deg)')
-      exhibit.css('transform','rotateY(0deg)')
+      editImg.css('transform', 'rotateY(180deg)')
+      exhibit.css('transform', 'rotateY(0deg)')
       window.location.reload();
     }
   })
