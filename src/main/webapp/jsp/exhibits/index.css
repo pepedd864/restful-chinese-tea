@@ -148,11 +148,23 @@
   gap: 0.5rem;
 }
 #app .content .edit-form .line input {
-  width: 12rem;
+  width: 10rem;
   background: url("../../assets/bg/text-bg.jpg") no-repeat center center;
   background-size: cover;
   border: 2px solid #9bad97;
   border-radius: 0.2rem;
+}
+#app .content .edit-form .line label:has(#category) {
+  width: 15rem;
+  display: flex;
+  align-items: center;
+}
+#app .content .edit-form .line label:has(#category) #category {
+  display: inline-block;
+  width: 8rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 #app .content .edit-form textarea {
   width: calc(100% - 2rem);

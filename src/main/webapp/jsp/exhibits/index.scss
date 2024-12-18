@@ -171,12 +171,28 @@
         gap: 0.5rem;
 
         input {
-          width: 12rem;
+          width: 10rem;
           background: url("../../assets/bg/text-bg.jpg") no-repeat center center;
           background-size: cover;
           border: 2px solid #9bad97;
           border-radius: 0.2rem;
         }
+
+        label:has(#category) {
+          width: 15rem;
+          display: flex;
+          align-items: center;
+
+          #category {
+            // 单行省略号
+            display: inline-block;
+            width: 8rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+        }
+
       }
 
       textarea {
