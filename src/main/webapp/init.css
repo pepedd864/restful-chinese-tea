@@ -52,13 +52,13 @@ button.btn:after {
     left: 50%;
     display: block;
     content: '';
-    height: 150%;
-    width: 150%;
+    height: 220%;
+    width: 220%;
     transform: translate(-50%,-50%);
     background: url("./assets/bg/btn5.png") no-repeat center center;
     background-size: contain;
     transition: opacity 1s;
-    /*mix-blend-mode: screen;*/
+    pointer-events: none;
 }
 
 button.btn:hover {
@@ -86,11 +86,6 @@ button.btn:focus {
 @font-face {
     font-family: font3;
     src: url("./assets/fonts/博洋欧体.ttf") format('truetype');
-}
-
-@font-face {
-    font-family: font4;
-    src: url("./assets/fonts/大梁体繁简.TTF") format('truetype');
 }
 
 /* 滚动条轨道 */

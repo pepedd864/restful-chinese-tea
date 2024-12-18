@@ -158,13 +158,13 @@
   border-radius: 0.2rem;
 }
 #app .content .edit-form .line label:has(#category) {
-  width: 15rem;
+  max-width: 15rem;
   display: flex;
   align-items: center;
 }
 #app .content .edit-form .line label:has(#category) #category {
   display: inline-block;
-  width: 8rem;
+  max-width: 8rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

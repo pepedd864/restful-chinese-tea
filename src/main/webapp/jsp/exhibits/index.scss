@@ -180,14 +180,14 @@
         }
 
         label:has(#category) {
-          width: 15rem;
+          max-width: 15rem;
           display: flex;
           align-items: center;
 
           #category {
             // 单行省略号
             display: inline-block;
-            width: 8rem;
+            max-width: 8rem;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;

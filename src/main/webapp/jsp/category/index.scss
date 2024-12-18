@@ -32,12 +32,15 @@
       backface-visibility: hidden;
       transition: transform 0.6s;
       transform-style: preserve-3d;
+
+      button {
+        font-size: 2rem;
+        width: 9rem;
+      }
     }
 
     .edit-info {
-
       input {
-        width: 12rem;
       }
     }
 
@@ -70,6 +73,10 @@
 
       tr {
         position: relative;
+
+        &, button {
+          font-size: 2rem;
+        }
 
 
         &:after {

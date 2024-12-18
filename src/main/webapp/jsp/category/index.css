@@ -33,8 +33,10 @@
   transition: transform 0.6s;
   transform-style: preserve-3d;
 }
-#app .edit-form .edit-info input {
-  width: 12rem;
+#app .edit-form .edit-info button,
+#app .edit-form .edit-icon button {
+  font-size: 2rem;
+  width: 9rem;
 }
 #app .edit-form .edit-icon {
   transform: rotateX(180deg);
@@ -62,6 +64,9 @@
 }
 #app .category-list table tr {
   position: relative;
+}
+#app .category-list table tr, #app .category-list table tr button {
+  font-size: 2rem;
 }
 #app .category-list table tr:after {
   position: absolute;
