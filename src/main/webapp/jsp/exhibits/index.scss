@@ -199,9 +199,9 @@
       width: 100%;
       height: 100%;
       padding: 1.5rem;
+      box-sizing: border-box;
       background: url("../../assets/bg/exhibits.jpg") no-repeat center center;
       background-size: cover;
-      border-radius: 1.5rem;
       box-shadow: 0.3rem 0.3rem 1rem #000;
       transform: rotateY(180deg);
 
