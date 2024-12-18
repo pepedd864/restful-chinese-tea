@@ -123,7 +123,7 @@ export async function initExhibitsList() {
       const title = $('input#title').val()
       const description = $('textarea#desc').val()
       const req = {num, title, description, categoryId}
-      if (dataItem?.id) {
+      if (currentStatus === statusEnum.edit) {
         await updateExhibits({
           id: dataItem.id,
           ...req
