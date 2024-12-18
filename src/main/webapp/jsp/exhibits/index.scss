@@ -17,6 +17,7 @@
     box-shadow: 0.3rem 0.3rem 1rem #000;
     border-radius: 0.7rem;
     overflow: hidden;
+    perspective: 100rem;
 
     .side {
       background: url("../../assets/bg/bg-left.jpg") no-repeat;
@@ -74,12 +75,21 @@
   .content {
     position: relative;
     flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    //display: flex;
+    //align-items: center;
+    //justify-content: center;
     height: 100%;
     background: url("../../assets/bg/bg-top.jpg") no-repeat center center;
     background-size: cover;
+
+    .exhibits,
+    .edit-form,
+    .edit-image {
+      backface-visibility: hidden;
+      position: absolute;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
 
     .exhibits {
       position: relative;
@@ -116,7 +126,7 @@
           transition: filter 0.3s;
 
           &:hover {
-            filter: drop-shadow(0 0 1rem #7aa567);
+            filter: drop-shadow(0 0 2rem #7aa567);
           }
         }
       }
@@ -144,6 +154,8 @@
     }
 
     .edit-form {
+      top: 20%;
+      left: 0;
       padding: 1.5rem;
       background: url("../../assets/bg/exhibits.jpg") no-repeat center center;
       background-size: cover;
@@ -151,6 +163,7 @@
       box-shadow: 0.3rem 0.3rem 1rem #000;
       margin: 1rem;
       box-sizing: border-box;
+      transform: rotateY(180deg);
 
       .line {
         display: flex;
@@ -176,6 +189,8 @@
     }
 
     .edit-image {
+      top: 0;
+      left: 0;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -188,6 +203,7 @@
       background-size: cover;
       border-radius: 1.5rem;
       box-shadow: 0.3rem 0.3rem 1rem #000;
+      transform: rotateY(180deg);
 
       img {
         object-fit: contain;

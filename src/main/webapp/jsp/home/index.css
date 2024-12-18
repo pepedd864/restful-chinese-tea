@@ -1,44 +1,46 @@
-@charset "UTF-8";
 #app {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
-    padding: 3rem;
-    background: url("../../assets/bg/bg-middle.jpg") no-repeat center center;
-    background-size: cover;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 3rem;
+  background: url("../../assets/bg/bg-middle.jpg") no-repeat center center;
+  background-size: cover;
 }
-
 #app .title {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 8rem;
 }
-
 #app .title .text {
-    text-align: center;
+  text-align: center;
 }
-
 #app .title .text .char {
-    font-size: 10rem;
+  font-size: 10rem;
 }
-
 #app .title .text .pinyin {
-    font-size: 2.5rem;
+  font-size: 2.5rem;
 }
-
 #app .divider {
-    height: 0.0625rem;
-    background: #000;
-    margin: 1rem 0;
-    width: 100%;
+  height: 0.0625rem;
+  background: #000;
+  margin: 1rem 0;
+  width: 100%;
 }
-
 #app .project-info {
-    text-align: center;
+  text-align: center;
+}
+#app .cup-img {
+  position: absolute;
+  top: 7rem;
+  right: 5rem;
+  width: 20rem;
+  height: 20rem;
+  object-fit: contain;
 }

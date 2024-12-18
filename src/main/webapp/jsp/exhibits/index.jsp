@@ -33,7 +33,7 @@
                 <div class="title">请先添加数据</div>
                 <div class="desc"></div>
             </div>
-            <div class="edit-form" style="display: none">
+            <div class="edit-form">
                 <div class="line">
                     <label for="num">
                         <span>展品编号:</span>
@@ -57,7 +57,7 @@
                     <textarea id="desc" rows="10"></textarea>
                 </fieldset>
             </div>
-            <div class="edit-image" style="display: none">
+            <div class="edit-image">
                 <img src="" alt="">
                 <div class="bottom">
                     <input type="file">

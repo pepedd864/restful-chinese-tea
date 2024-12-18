@@ -17,6 +17,7 @@
   box-shadow: 0.3rem 0.3rem 1rem #000;
   border-radius: 0.7rem;
   overflow: hidden;
+  perspective: 100rem;
 }
 #app .wrapper .side {
   background: url("../../assets/bg/bg-left.jpg") no-repeat;
@@ -64,12 +65,17 @@
 #app .content {
   position: relative;
   flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   height: 100%;
   background: url("../../assets/bg/bg-top.jpg") no-repeat center center;
   background-size: cover;
+}
+#app .content .exhibits,
+#app .content .edit-form,
+#app .content .edit-image {
+  backface-visibility: hidden;
+  position: absolute;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
 }
 #app .content .exhibits {
   position: relative;
@@ -104,7 +110,7 @@
   transition: filter 0.3s;
 }
 #app .content .exhibits .btn-group .btn:hover {
-  filter: drop-shadow(0 0 1rem #7aa567);
+  filter: drop-shadow(0 0 2rem #7aa567);
 }
 #app .content .exhibits img {
   position: relative;
@@ -125,6 +131,8 @@
   overflow-y: auto;
 }
 #app .content .edit-form {
+  top: 20%;
+  left: 0;
   padding: 1.5rem;
   background: url("../../assets/bg/exhibits.jpg") no-repeat center center;
   background-size: cover;
@@ -132,6 +140,7 @@
   box-shadow: 0.3rem 0.3rem 1rem #000;
   margin: 1rem;
   box-sizing: border-box;
+  transform: rotateY(180deg);
 }
 #app .content .edit-form .line {
   display: flex;
@@ -153,6 +162,8 @@
   background-size: cover;
 }
 #app .content .edit-image {
+  top: 0;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -165,6 +176,7 @@
   background-size: cover;
   border-radius: 1.5rem;
   box-shadow: 0.3rem 0.3rem 1rem #000;
+  transform: rotateY(180deg);
 }
 #app .content .edit-image img {
   object-fit: contain;

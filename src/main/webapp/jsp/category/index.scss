@@ -18,7 +18,7 @@
     border-radius: 0.7rem;
     box-shadow: 0.3rem 0.3rem 1rem #000;
     overflow: hidden;
-    background: url("../../assets/bg/btn1.png") no-repeat center center;
+    background: url("../../assets/bg/two.jpg") no-repeat center center;
     background-size: cover;
 
     .edit-info {
@@ -63,14 +63,37 @@
       border-spacing: unset;
 
       tr {
+        position: relative;
+
+
+        &:after {
+          position: absolute;
+          content: '';
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 0;
+          background: url("../../assets/bg/one.jpg") no-repeat;
+          background-size: cover;
+          transition: opacity 0.3s;
+          opacity: 0;
+        }
+
         &:has(th) {
           background: url("../../assets/bg/bg-top.jpg") no-repeat;
           background-size: cover;
         }
 
         &:has(td):hover {
-          background: url("../../assets/bg/bg-top.jpg") no-repeat;
-          background-size: cover;
+          &:after {
+            opacity: 1;
+          }
+        }
+
+        td {
+          position: relative;
+          z-index: 1;
         }
 
         td:last-child {

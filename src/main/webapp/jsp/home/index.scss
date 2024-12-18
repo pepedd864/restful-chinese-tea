@@ -16,6 +16,7 @@
     align-items: center;
     justify-content: center;
     gap: 2rem;
+    margin-top: 8rem;
 
     .text {
       text-align: center;
@@ -45,5 +46,14 @@
 
     .bottom {
     }
+  }
+
+  .cup-img {
+    position: absolute;
+    top: 7rem;
+    right: 5rem;
+    width: 20rem;
+    height: 20rem;
+    object-fit: contain;
   }
 }
