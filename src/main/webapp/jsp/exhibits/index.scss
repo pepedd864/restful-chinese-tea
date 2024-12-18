@@ -37,6 +37,7 @@
         margin: 0 1rem;
         writing-mode: vertical-lr;
         cursor: pointer;
+        transition: transform 0.3s;
 
         span {
           position: relative;
@@ -48,6 +49,10 @@
           &:after {
             filter: drop-shadow(0.5rem -0.5rem 1rem #000);
           }
+        }
+
+        &:active {
+          transform: scale(0.95);
         }
 
         &:after {
@@ -129,6 +134,12 @@
       .title {
         position: relative;
         font-size: 3.5rem;
+      }
+
+      .desc {
+        margin: 1rem 2rem;
+        flex: 1;
+        overflow-y: auto;
       }
     }
 

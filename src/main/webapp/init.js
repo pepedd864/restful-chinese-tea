@@ -7,7 +7,7 @@ window.generateMenus = async function () {
   menus.push({
     title: '分类管理',
     num: 'manage',
-    icon: '/api/file/display/default-icon.png'
+    icon: '/assets/side/default-menu.png'
   }, ...data)
   const btns = menus.map((item) => {
     return '<div class="btn" data-page="' + (item.num === 'manage' ? 'category' : 'exhibits?categoryId=' + item?.id) + '">' +
