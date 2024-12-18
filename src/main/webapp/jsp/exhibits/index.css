@@ -36,6 +36,7 @@
   margin: 0 1rem;
   writing-mode: vertical-lr;
   cursor: pointer;
+  transition: transform 0.3s;
 }
 #app .wrapper .side .btn span {
   position: relative;
@@ -44,6 +45,9 @@
 }
 #app .wrapper .side .btn:hover:after {
   filter: drop-shadow(0.5rem -0.5rem 1rem #000);
+}
+#app .wrapper .side .btn:active {
+  transform: scale(0.95);
 }
 #app .wrapper .side .btn:after {
   position: absolute;
@@ -114,6 +118,11 @@
 #app .content .exhibits .title {
   position: relative;
   font-size: 3.5rem;
+}
+#app .content .exhibits .desc {
+  margin: 1rem 2rem;
+  flex: 1;
+  overflow-y: auto;
 }
 #app .content .edit-form {
   padding: 1.5rem;
