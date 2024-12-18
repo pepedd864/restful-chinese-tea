@@ -47,6 +47,7 @@
             组长：郭洋 组员1：辛典典 组员2：董泓毅 组员3：罗汉文
         </div>
     </div>
+    <img class="cup-img" src="../../assets/bg/btn6.png" />
 </div>
 </body>
 </html>

@@ -78,8 +78,8 @@ export async function initExhibitsList() {
   $(btnGroup).on('click', '.btn', async function () {
     if ($(this).hasClass('add-btn')) {
       currentStatus = statusEnum.add
-      exhibit.hide()
-      editForm.show()
+      exhibit.css('transform','rotateY(180deg)')
+      editForm.css('transform','rotateY(0deg)')
       setEditForm(statusEnum.add)
     }
     if ($(this).hasClass('edit-btn')) {
@@ -88,8 +88,8 @@ export async function initExhibitsList() {
         return
       }
       currentStatus = statusEnum.edit
-      exhibit.hide()
-      editForm.show()
+      exhibit.css('transform','rotateY(180deg)')
+      editForm.css('transform','rotateY(0deg)')
       // 设置表单值
       setEditForm(statusEnum.edit)
     }
@@ -106,8 +106,8 @@ export async function initExhibitsList() {
         return
       }
       currentStatus = statusEnum.img
-      exhibit.hide()
-      editImg.show()
+      exhibit.css('transform','rotateY(180deg)')
+      editImg.css('transform','rotateY(0deg)')
       editImg.find('img').attr('src', contextPath + dataItem.img)
     }
   })
@@ -115,8 +115,8 @@ export async function initExhibitsList() {
   $(editForm).on('click', '.btn', async function () {
     if ($(this).hasClass('cancel-btn')) {
       currentStatus = statusEnum.list
-      editForm.hide()
-      exhibit.show()
+      editForm.css('transform','rotateY(180deg)')
+      exhibit.css('transform','rotateY(0deg)')
     }
     if ($(this).hasClass('edit-btn')) {
       const num = $('input#num').val()
@@ -137,8 +137,8 @@ export async function initExhibitsList() {
   $(editImg).on('click', '.btn', async function () {
     if ($(this).hasClass('cancel-btn')) {
       currentStatus = statusEnum.list
-      editImg.hide()
-      exhibit.show()
+      editImg.css('transform','rotateY(180deg)')
+      exhibit.css('transform','rotateY(0deg)')
     }
     if ($(this).hasClass('upload-btn')) {
       const file = editImg.find('input[type="file"]')[0].files[0];
@@ -155,8 +155,8 @@ export async function initExhibitsList() {
       }
       const {data: r} = await updateExhibits(data)
       if (!r) return
-      editImg.hide()
-      exhibit.show()
+      editImg.css('transform','rotateY(180deg)')
+      exhibit.css('transform','rotateY(0deg)')
       window.location.reload();
     }
   })
