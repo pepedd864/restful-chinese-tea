@@ -110,7 +110,7 @@
   transition: filter 0.3s;
 }
 #app .content .exhibits .btn-group .btn:hover {
-  filter: drop-shadow(0 0 2rem #7aa567);
+  filter: drop-shadow(0.3rem 0.3rem 2rem #fff);
 }
 #app .content .exhibits img {
   position: relative;
@@ -129,6 +129,9 @@
   margin: 1rem 2rem;
   flex: 1;
   overflow-y: auto;
+}
+#app .content .exhibits .desc, #app .content .exhibits .desc div, #app .content .exhibits .desc span {
+  font-family: font2, serif;
 }
 #app .content .edit-form {
   top: 20%;
@@ -155,13 +158,13 @@
   border-radius: 0.2rem;
 }
 #app .content .edit-form .line label:has(#category) {
-  width: 15rem;
+  max-width: 15rem;
   display: flex;
   align-items: center;
 }
 #app .content .edit-form .line label:has(#category) #category {
   display: inline-block;
-  width: 8rem;
+  max-width: 8rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

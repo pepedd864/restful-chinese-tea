@@ -37,7 +37,7 @@
             <button class="btn add-btn">添加记录</button>
             <button class="btn edit-btn">修改记录</button>
         </div>
-        <div class="edit-icon" style="display: none">
+        <div class="edit-icon">
             <div class="left">
                 <div class="item">
                     <label>

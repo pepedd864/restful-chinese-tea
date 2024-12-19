@@ -47,25 +47,25 @@ export async function generateCategoryList() {
 
 export function listItemClick() {
   $(document).on('click', '.category-list .btn', async function () {
+    const editIcon = $('#app .edit-icon');
+    const editInfo = $('#app .edit-info')
     const row = $(this).closest('tr');
     const id = row.data('id');
     const num = row.find('td:eq(1)').text();
     const title = row.find('td:eq(2)').text();
 
     if ($(this).hasClass('upload-btn')) {
-      const editIcon = $('#app .edit-icon');
       editIcon.find('input[type="text"]').val(id);
-      editIcon.show();
-      $('#app .edit-info').hide();
+      editIcon.css('transform', 'rotateX(0deg)');
+      editInfo.css('transform', 'rotateX(180deg)');
     }
 
     if ($(this).hasClass('edit-btn')) {
-      const editInfo = $('#app .edit-info');
       editInfo.find('input:eq(0)').val(id);
       editInfo.find('input:eq(1)').val(num);
       editInfo.find('input:eq(2)').val(title);
-      editInfo.show();
-      $('#app .edit-icon').hide();
+      editInfo.css('transform', 'rotateX(0deg)');
+      editIcon.css('transform', 'rotateX(180deg)');
     }
 
     if ($(this).hasClass('delete-btn')) {
@@ -120,6 +120,7 @@ export function formInfoClick() {
 export async function formIconClick() {
   $('#app .edit-icon button').click(async function () {
     const editIcon = $('#app .edit-icon');
+    const editInfo = $('#app .edit-info')
     const id = editIcon.find('input[type="text"]').val();
     if ($(this).hasClass('upload-btn')) {
       const file = editIcon.find('input[type="file"]')[0].files[0];
@@ -137,14 +138,14 @@ export async function formIconClick() {
       }
       const r = await updateCategory(data)
       if (!r.data) return
-      editIcon.hide();
-      $('#app .edit-info').show()
+      editIcon.css('transform', 'rotateX(0deg)');
+      editInfo.css('transform', 'rotateX(180deg)');
       await window.parent.generateMenus()
       await generateCategoryList()
     }
     if ($(this).hasClass('cancel-btn')) {
-      editIcon.hide();
-      $('#app .edit-info').show()
+      editInfo.css('transform', 'rotateX(0deg)');
+      editIcon.css('transform', 'rotateX(180deg)');
     }
 
   })
