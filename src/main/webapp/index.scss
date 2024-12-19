@@ -65,7 +65,8 @@ body {
       display: flex;
       align-items: center;
       flex-direction: column;
-      padding-top: 1rem;
+      padding: 1rem 0;
+      box-sizing: border-box;
       gap: 1rem;
       color: #fff;
       background-size: cover;
